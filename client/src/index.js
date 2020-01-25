@@ -12,7 +12,7 @@ import { onError } from "apollo-link-error";
 import { ApolloLink } from "apollo-link";
 import { HashRouter } from "react-router-dom";
 
-import { VERIFY_USER } from "../src/graphql/mutations";
+import { VERIFY_USER } from "./components/graphql/mutations";
 
 const cache = new InMemoryCache({
   dataIdFromObject: object => object._id || null
