@@ -8,9 +8,14 @@ module.exports = function validateRegisterInput(data) {
     data.email = validText(data.email) ? data.email : "";
     data.password = validText(data.password) ? data.password : "";
 
+    if (!["owner", "walker"].includes(data.accountType.toLowerCase())) {
+        return { message: "Invalid account type", isValid: false };
+    }
+    
     if (Validator.isEmpty(data.username)) {
         return { message: "Name field is required", isValid: false };
     }
+
     if (Validator.isEmpty(data.accountType)) {
         return { message: "Type field is required", isValid: false };
     }
