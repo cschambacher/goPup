@@ -29,6 +29,9 @@ const UserSchema = new Schema({
     {
       type: Array
     }
+  ],
+  routes: [
+    { type: Schema.Types.ObjectId, ref: "route" }
   ]
 })
 
