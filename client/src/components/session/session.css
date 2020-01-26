@@ -1,0 +1,105 @@
+#sessionNavbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  height: 44px;
+
+  border-bottom: 1px solid rgba(8, 73, 28, 0.1);
+}
+
+#logoFont {
+  font-family: 'Flavors', cursive;
+  font-size: 32px;
+  color: #16C94C;
+}
+
+#sessionLoginButton, #sessionRegisterButton {
+  text-decoration: none;
+  padding: 5px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: 500px;
+}
+
+#sessionLoginButton {
+  color: #084A1C;
+  border: 1px solid #084A1C;
+}
+
+#sessionLoginButton:hover {
+  background: #F8F8F8;
+}
+
+#sessionRegisterButton {
+  background: #16C94C;
+  color: #084A1C;
+}
+
+#sessionRegisterButton:hover {
+  background: #02B538; 
+}
+
+#sessionBackgroundColor {
+  
+  /* background: rgb(227,233,240); */
+  background: linear-gradient(0deg, #e3e9f0 0%, #f7fbfe 31%);
+
+  height: calc(100vh - 55px);
+  
+}
+
+#sessionBackgroundImage {
+  background: url("https://cdn.pixabay.com/photo/2015/07/09/19/32/dog-838281_640.jpg") no-repeat right bottom;
+  height: calc(100vh - 480px);
+}
+
+#sessionLoginFormWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 425px;
+}
+
+#sessionLoginForm {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(208, 215, 231, 0.7);
+  padding: 20px;
+}
+
+#sessionLoginForm input {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+#sessionLoginForm button {
+  background: #16C94C;
+  color: #084A1C;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: 500px;
+  border: none;
+}
+
+#sessionLoginForm select {
+  margin-bottom: 15px;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  outline: none;
+}
+
+#sessionLoginFormHeader {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  color: #084A1C;
+}

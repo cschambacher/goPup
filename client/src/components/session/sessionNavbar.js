@@ -1,39 +1,30 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
-import { Query, ApolloConsumer } from "react-apollo";
-import { IS_LOGGED_IN } from "../graphql/queries";
+import { withRouter, Link, Route, Switch } from "react-router-dom";
 
-const Nav = props => {
+const SessionNavbar = props => {
   return (
-    <ApolloConsumer>
-      {client => (
-          <Query query={IS_LOGGED_IN}>
-            {({ data }) => {
-              if (data.isLoggedIn) {
-                return (
-                  <button
-                    onClick={e => {
-                      e.preventDefault();
-                      localStorage.removeItem("auth-token");
-                      client.writeData({ data: { isLoggedIn: false } });
-                      props.history.push("/");
-                    }}
-                  >
-                    Logout
-                  </button>
-                );
-              } else {
-                return (
-                  <div>
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
-                  </div>
-                );
-              }
-            }}
-          </Query>
-        )}
-    </ApolloConsumer>
+    <div id="sessionNavbarContainer">
+      <div id="logoFont">goPup</div>
+      <Switch>
+        <Route
+          path="/register"
+          component={() => (
+            <Link id="sessionLoginButton" to="/login">
+              Log In
+            </Link>
+          )}
+        />
+        <Route
+          path="/login"
+          component={() => (
+            <Link id="sessionRegisterButton" to="/register">
+              Sign Up
+            </Link>
+          )}
+        />
+      </Switch>
+    </div>
   );
 };
-export default withRouter(Nav);
+
+export default withRouter(SessionNavbar);
