@@ -12,12 +12,7 @@ const App = () => {
       <h1> goPup! </h1>
       <Switch>
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
-        <AuthRoute
-          exact
-          path="/register"
-          component={Register}
-          routeType="auth"
-        />
+        <AuthRoute exact path="/register" component={Register} routeType="auth" />
       </Switch>
     </div>
   );
