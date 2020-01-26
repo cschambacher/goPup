@@ -8,8 +8,8 @@ const App = () => {
     <div>
       <Switch>
         <Route path="/(register|login)" component={SessionMaster} />
+        <Route path="/" component={LandingMaster} />
         <Route path="/" component={() => <div>Hello, there. Landing page belongs here!</div>} />
-        {/* <Route path="/" component={LandingMaster} /> */}
       </Switch>
     </div>
   );
