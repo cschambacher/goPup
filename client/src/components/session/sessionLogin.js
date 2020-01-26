@@ -13,10 +13,6 @@ class Login extends Component {
     }
 
     updateCache = (client, { data }) => {
-<<<<<<< HEAD
-        // console.log(data);
-=======
->>>>>>> d6ec1cef24973874a4f99b075e1533394ecbee88
         // here we can write directly to our cache with our returned mutation data
         client.writeData({
             data: { isLoggedIn: data.login.loggedIn }
