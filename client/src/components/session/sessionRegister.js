@@ -8,9 +8,12 @@ class Register extends Component {
 
     this.state = {
       email: "",
-      name: "",
-      password: ""
+      username: "",
+      password: "",
+      accountType: "owner"
     };
+
+    // this.updateSelection = this.updateSelection.bind(this);
   }
 
   updateCache = (client, { data }) => {
@@ -24,7 +27,14 @@ class Register extends Component {
   update = field => {
     return e => this.setState({ [field]: e.target.value });
   };
+
+  // updateSelection(e) {
+  //   e.preventDefault();
+  //   this.setState({ accountType: e.taget.value });
+  // }
+
   render() {
+    console.log(this.state)
     return (
       <Mutation
         mutation={REGISTER_USER}
@@ -43,8 +53,9 @@ class Register extends Component {
                 registerUser({
                   variables: {
                     email: this.state.email,
-                    name: this.state.name,
-                    password: this.state.password
+                    username: this.state.username,
+                    password: this.state.password,
+                    accountType: this.state.accountType
                   }
                 });
               }}
@@ -55,8 +66,8 @@ class Register extends Component {
                 placeholder="Email"
               />
               <input
-                value={this.state.name}
-                onChange={this.update("name")}
+                value={this.state.username}
+                onChange={this.update("username")}
                 placeholder="Name"
               />
               <input
@@ -65,6 +76,10 @@ class Register extends Component {
                 type="password"
                 placeholder="Password"
               />
+              <select onChange={this.update("accountType")}>
+                <option value="owner">Owner</option>
+                <option value="walker">Walker</option>
+              </select>
               <button type="submit">Register</button>
             </form>
           </div>
