@@ -47,41 +47,50 @@ class Register extends Component {
       >
         {registerUser => (
           <div>
-            <form
-              onSubmit={e => {
-                e.preventDefault();
-                registerUser({
-                  variables: {
-                    email: this.state.email,
-                    username: this.state.username,
-                    password: this.state.password,
-                    accountType: this.state.accountType
-                  }
-                });
-              }}
-            >
-              <input
-                value={this.state.email}
-                onChange={this.update("email")}
-                placeholder="Email"
-              />
-              <input
-                value={this.state.username}
-                onChange={this.update("username")}
-                placeholder="Name"
-              />
-              <input
-                value={this.state.password}
-                onChange={this.update("password")}
-                type="password"
-                placeholder="Password"
-              />
-              <select onChange={this.update("accountType")}>
-                <option value="owner">Owner</option>
-                <option value="walker">Walker</option>
-              </select>
-              <button type="submit">Register</button>
-            </form>
+            <div id="sessionBackgroundColor">
+              <div id="sessionLoginFormWrapper">
+                <form
+                  id="sessionLoginForm"
+                  onSubmit={e => {
+                    e.preventDefault();
+                    registerUser({
+                      variables: {
+                        email: this.state.email,
+                        username: this.state.username,
+                        password: this.state.password,
+                        accountType: this.state.accountType
+                      }
+                    });
+                  }}
+                >
+                  <div id="sessionLoginFormHeader">
+                    <h3>Register</h3>
+                  </div>
+                  <input
+                    value={this.state.email}
+                    onChange={this.update("email")}
+                    placeholder="Email"
+                  />
+                  <input
+                    value={this.state.username}
+                    onChange={this.update("username")}
+                    placeholder="Name"
+                  />
+                  <input
+                    value={this.state.password}
+                    onChange={this.update("password")}
+                    type="password"
+                    placeholder="Password"
+                  />
+                  <select onChange={this.update("accountType")}>
+                    <option value="owner">I am a dog owner</option>
+                    <option value="walker">I am a dog walker</option>
+                  </select>
+                  <button type="submit">Register</button>
+                </form>
+              </div>
+              <div id="sessionBackgroundImage"></div>
+            </div>
           </div>
         )}
       </Mutation>
