@@ -14,7 +14,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px 15px;
-  height: 44px;
+  height: 56px;
   width: 100vw;
   border-bottom: 1px solid rgba(8, 73, 28, 0.1);
 }
@@ -91,14 +91,15 @@
 #userDropMask {
   position: relative;
   top:-2px;
-  left:41px;
+  left:29px;
   width:44px;
   height: 5px;
   background-color:#F7F7FA;
 }
 
 #landingBarDashboardDrop {
-  left: 159px;
+  left: 174px;
+  /* top: px; */
   width: 125px;
 }
 
@@ -111,7 +112,7 @@
 }
 
 #landingBarUserDrop {
-  right: 60px;
+  right: 59px;
   width: 80px;
 }
 
