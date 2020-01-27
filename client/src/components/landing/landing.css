@@ -20,13 +20,13 @@
 }
 
 #landingNavbarSearch {
-  color: #ababac;
+  color: #16C94C;
   padding: 0px 15px;
   margin-left: 15px;
 }
 
 #landingNavbarSearch:hover {
-  color: #78787F;
+  color: #02B538;
   cursor: pointer;
 }
 
@@ -56,6 +56,7 @@
 
 .dropItem:hover {
   background: rgb(226, 226, 226);
+  color: #02B538;
 }
 
 .landingNavbarMenu:hover {
@@ -101,9 +102,16 @@
   width: 125px;
 }
 
+#landingNavbarMenuRoute, #landingNavbarMenuUser > i {
+  color: #16C94C;
+}
+
+#landingNavbarMenuRoute:hover, #landingNavbarMenuUser:hover > i {
+  color: #02B538;
+}
+
 #landingBarUserDrop {
-  /* left: 666px; */
-  right: 15px;
+  right: 60px;
   width: 80px;
 }
 

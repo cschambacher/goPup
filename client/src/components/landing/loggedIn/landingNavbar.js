@@ -31,7 +31,6 @@ const LandingNavbar = props => {
                           >
                             <div id="mask"></div>
                             <div className="dropItem">Create</div>
-                            <div className="dropItem">Search</div>
                             <div className="dropItem">Explore</div>
                             <div className="dropItem">Stats</div>
                           </div>
@@ -49,6 +48,8 @@ const LandingNavbar = props => {
                             className="landingBarDrop"
                           >
                             <div id="userDropMask"></div>
+                            <div className="dropItem">Profile</div>
+                            <div className="dropItem">Settings</div>
                             <div
                               className="dropItem"
                               id="sessionLogoutButton"
@@ -62,6 +63,13 @@ const LandingNavbar = props => {
                               Logout
                             </div>
                           </div>
+                        </div>
+
+                        <div
+                          id="landingNavbarMenuRoute"
+                          className="landingNavbarMenu"
+                        >
+                          <i class="far fa-plus-square"></i>
                         </div>
                       </div>
                     </div>
