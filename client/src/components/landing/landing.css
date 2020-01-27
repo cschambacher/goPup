@@ -51,6 +51,7 @@
 
 .dropItem {
   padding: 5px 15px;
+  margin-bottom: 5px;
 }
 
 .dropItem:hover {
@@ -70,22 +71,39 @@
 
 .landingBarDrop {
   position: absolute;
-  top: 52px;
+  top: 54px;
   display: none;
+  padding: 0px 5px;
   border: 1px solid rgba(8, 73, 28, 0.1);
-  border-top: 4px solid #F7F7FA;
-  
-
   background: #F7F7FA;
+}
+
+#mask {
+  position: relative;
+  top:-2px;
+  left:-5px;
+  width:76px;
+  height: 5px;
+  background-color:#F7F7FA;
+}
+
+#userDropMask {
+  position: relative;
+  top:-2px;
+  left:41px;
+  width:44px;
+  height: 5px;
+  background-color:#F7F7FA;
 }
 
 #landingBarDashboardDrop {
   left: 159px;
-  width: 105px;
+  width: 125px;
 }
 
-#landingBarExploreDrop {
-  left: 266px;
+#landingBarUserDrop {
+  /* left: 666px; */
+  right: 15px;
   width: 80px;
 }
 
@@ -93,7 +111,7 @@
   display: block;
 }
 
-#landingNavbarMenuExplore:hover > div#landingBarExploreDrop {
+#landingNavbarMenuUser:hover > div#landingBarUserDrop {
   display: block;
 }
 
@@ -107,6 +125,11 @@
 }
 
 #landingNavbarLeftContainer {
+  display: flex;
+  align-items: center;
+}
+
+#landingNavbarRightContainer {
   display: flex;
   align-items: center;
 }

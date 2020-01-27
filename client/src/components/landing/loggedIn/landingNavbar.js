@@ -24,41 +24,45 @@ const LandingNavbar = props => {
                           id="landingNavbarMenuDashboard"
                           className="landingNavbarMenu landingNavbarSelected"
                         >
-                          Dashboard
+                          Routes
                           <div
                             id="landingBarDashboardDrop"
                             className="landingBarDrop"
                           >
+                            <div id="mask"></div>
                             <div className="dropItem">Create</div>
+                            <div className="dropItem">Search</div>
+                            <div className="dropItem">Explore</div>
                             <div className="dropItem">Stats</div>
+                          </div>
                         </div>
-                        </div>
-                        <div 
-                          id="landingNavbarMenuExplore"
-                          class="landingNavbarMenu"
+                        
+                      </div>
+                      <div id="landingNavbarLeftContainer">
+                        <div
+                          id="landingNavbarMenuUser"
+                          className="landingNavbarMenu"
                         >
-                          Explore
+                          <i className="far fa-user-circle"></i>
                           <div
-                            id="landingBarExploreDrop"
+                            id="landingBarUserDrop"
                             className="landingBarDrop"
                           >
-                            <div className="dropItem">Explore</div>
-                            <div className="dropItem">Search</div>
+                            <div id="userDropMask"></div>
+                            <div
+                              className="dropItem"
+                              id="sessionLogoutButton"
+                              onClick={e => {
+                                e.preventDefault();
+                                localStorage.removeItem("auth-token");
+                                client.writeData({ data: { isLoggedIn: false } });
+                                props.history.push("/login");
+                              }}
+                            >
+                              Logout
+                            </div>
+                          </div>
                         </div>
-                        </div>
-                      </div>
-                      <div>
-                        <button
-                          className="landingNavButton"
-                          onClick={e => {
-                            e.preventDefault();
-                            localStorage.removeItem("auth-token");
-                            client.writeData({ data: { isLoggedIn: false } });
-                            props.history.push("/login");
-                          }}
-                        >
-                          Logout
-                      </button>
                       </div>
                     </div>
                   );
