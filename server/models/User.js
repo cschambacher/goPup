@@ -35,4 +35,11 @@ const UserSchema = new Schema({
   ]
 })
 
+UserSchema.statics.findRoutes = function (userId) {
+  return this.findById(userId)
+    .populate("routes")
+    .then(user => user.products);
+
+};
+
 module.exports = mongoose.model("user", UserSchema);
