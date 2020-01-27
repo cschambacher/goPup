@@ -22,7 +22,7 @@ const LandingMaster = () => {
             {({ data }) => {
               if (data.isLoggedIn) {
                 return (
-                  <div>
+                  <div id="landingMasterContainer">
                     <LoggedInLandingNavbar />
                     <LoggedInLandingHero />
                     <LoggedInLandingFooter />
@@ -30,7 +30,7 @@ const LandingMaster = () => {
                 );
               } else {
                 return (
-                  <div>
+                  <div id="landingMasterContainer">
                     <LoggedOutLandingNavbar />
                     <LoggedOutLandingHero />
                     <LoggedOutLandingFooter />

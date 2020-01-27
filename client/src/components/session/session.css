@@ -4,8 +4,9 @@
   align-items: center;
   padding: 5px 15px;
   height: 44px;
-
+  /* width: 100vw; */
   border-bottom: 1px solid rgba(8, 73, 28, 0.1);
+
 }
 
 #logoFont {

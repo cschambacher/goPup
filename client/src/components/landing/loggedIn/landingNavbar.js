@@ -14,19 +14,38 @@ const LandingNavbar = props => {
               {({ data }) => {
                 if (data.isLoggedIn) {
                   return (
-                    <div id="sessionNavbarContainer">
-                      <div id="logoFont">goPup</div>
-                      <button
-                        className="langingNavButton"
-                        onClick={e => {
-                          e.preventDefault();
-                          localStorage.removeItem("auth-token");
-                          client.writeData({ data: { isLoggedIn: false } });
-                          props.history.push("/login");
-                        }}
-                      >
-                        Logout
+                    <div id="landingNavbarContainer">
+                      <div id="landingNavbarLeftContainer">
+                        <div id="logoFont">goPup</div>
+                        <div id="landingNavbarSearch">
+                          <i class="fas fa-search"></i>
+                        </div>
+                        <div 
+                          id="landingNavbarMenuDashboard"
+                          class="landingNavbarMenu"
+                        >
+                          Dashboard
+                        </div>
+                        <div 
+                          id="landingNavbarMenuExplore"
+                          class="landingNavbarMenu"
+                        >
+                          Explore
+                        </div>
+                      </div>
+                      <div>
+                        <button
+                          className="landingNavButton"
+                          onClick={e => {
+                            e.preventDefault();
+                            localStorage.removeItem("auth-token");
+                            client.writeData({ data: { isLoggedIn: false } });
+                            props.history.push("/login");
+                          }}
+                        >
+                          Logout
                       </button>
+                      </div>
                     </div>
                   );
                 } else {

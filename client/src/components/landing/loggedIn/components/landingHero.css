@@ -1,0 +1,18 @@
+.landingHeroBox {
+  padding: 5px 15px;
+  width: 250px;
+}
+
+#landingHeroLeftContainer {
+  border: 2px solid red;
+}
+
+#landingHeroCenterContainer {
+  border: 2px solid blue;
+  width: 600px;
+}
+
+#landingHeroRightContainer {
+  border: 2px solid green;
+
+}
