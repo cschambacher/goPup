@@ -4,7 +4,7 @@ import { withRouter, Link, Route, Switch } from "react-router-dom";
 const SessionNavbar = props => {
   return (
     <div id="sessionNavbarContainer">
-      <div id="logoFont">goPup</div>
+      <div id="logoFont">goPüp</div>
       <Switch>
         <Route
           path="/register"

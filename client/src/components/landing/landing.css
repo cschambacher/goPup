@@ -1,7 +1,6 @@
 .LandingNavCont {
   display: flex;
   position: fixed;
-  overflow-y: hidden;
   align-items: center;
   height: 56px;
   width: 100%;
@@ -10,31 +9,172 @@
   background-color: #F8F8F8;
 }
 
+#landingNavbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  height: 44px;
+  width: 100vw;
+  border-bottom: 1px solid rgba(8, 73, 28, 0.1);
+}
+
+#landingNavbarSearch {
+  color: #16C94C;
+  padding: 0px 15px;
+  margin-left: 15px;
+}
+
+#landingNavbarSearch:hover {
+  color: #02B538;
+  cursor: pointer;
+}
+
+#landingNavbarMenuDashboard {
+
+}
+
+#landingNavbarMenuExplore {
+
+}
+
+.landingNavbarMenu {
+  color: #7e7e7e;
+  padding: 0px 15px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+
+  /* z-index: 0; */
+}
+
+.dropItem {
+  padding: 5px 15px;
+  margin-bottom: 5px;
+}
+
+.dropItem:hover {
+  background: rgb(226, 226, 226);
+  color: #02B538;
+}
+
+.landingNavbarMenu:hover {
+  border-left: 1px solid rgba(8, 73, 28, 0.1);
+  border-right: 1px solid rgba(8, 73, 28, 0.1);
+  padding-left: 14px;
+  padding-right: 14px;
+  border-bottom: 0px;
+  padding-top: 0px;
+
+  cursor: pointer;
+}
+
+.landingBarDrop {
+  position: absolute;
+  top: 54px;
+  display: none;
+  padding: 0px 5px;
+  border: 1px solid rgba(8, 73, 28, 0.1);
+  background: #F7F7FA;
+}
+
+#mask {
+  position: relative;
+  top:-2px;
+  left:-5px;
+  width:76px;
+  height: 5px;
+  background-color:#F7F7FA;
+}
+
+#userDropMask {
+  position: relative;
+  top:-2px;
+  left:41px;
+  width:44px;
+  height: 5px;
+  background-color:#F7F7FA;
+}
+
+#landingBarDashboardDrop {
+  left: 159px;
+  width: 125px;
+}
+
+#landingNavbarMenuRoute, #landingNavbarMenuUser > i {
+  color: #16C94C;
+}
+
+#landingNavbarMenuRoute:hover, #landingNavbarMenuUser:hover > i {
+  color: #02B538;
+}
+
+#landingBarUserDrop {
+  right: 60px;
+  width: 80px;
+}
+
+#landingNavbarMenuDashboard:hover > div#landingBarDashboardDrop {
+  display: block;
+}
+
+#landingNavbarMenuUser:hover > div#landingBarUserDrop {
+  display: block;
+}
+
+#landingNavbarMenuExplore:hover div.landingNavbarMenu {
+  border-bottom: 0px;
+}
+
+.landingNavbarSelected {
+  border-bottom: 3px solid #16C94C;
+  padding-top: 3px;
+}
+
+#landingNavbarLeftContainer {
+  display: flex;
+  align-items: center;
+}
+
+#landingNavbarRightContainer {
+  display: flex;
+  align-items: center;
+}
+
+#landingHeroContainer {
+  margin-top: 56px;
+  padding: 25px 15px;
+  background: #F7F7FA;
+
+  display: flex;
+  justify-content: space-around;
+}
+
 .LandingNavSubCont {
   height: 100%;
   background-color: black;
   margin-top: 56px;
 }
 
-.langingNavButton {
+.landingNavButton {
   text-decoration: none;
   padding: 5px 15px;
   font-size: 14px;
   border-radius: 5px;
   font-weight: 500px;
-  margin-left: 90%;
   cursor: pointer;
 }
 
-.langingNavButton:hover {
+.landingNavButton:hover {
   cursor: pointer;
 }
 
 #landingFooterCont {
   display: flex;
+  border-top: 1px solid rgba(8, 73, 28, 0.1);
   justify-content: space-around;
-  padding: 70px 0px;
-  margin-top: 56px;
+  padding: 20px 0px;
   background: #F7F7FA;
   color: white;
   /* text-transform: uppercase; */
@@ -61,7 +201,7 @@
   padding: 20px 0px;
 }
 
-#landing-navGroup h5{
+#landing-navGroup h5 {
   color: #78787F;
   word-break: break-word;
   line-height: 22px;
@@ -71,8 +211,9 @@
 
 #landing-navGroup ul {
   list-style-type: none;
-  margin-left: -35%;
+  /* margin-left: -30%; */
   font-size: 15px;
+  padding-inline-start: 0px;
 }
 
 #landing-navGroup li {
@@ -87,4 +228,9 @@
 
 #landing-navGroup a:hover {
   color: #78787F;
+}
+
+#landing-navGroup .icon {
+  color: #78787F;
+  margin-right: 10px;
 }

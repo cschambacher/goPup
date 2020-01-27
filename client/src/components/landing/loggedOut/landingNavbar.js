@@ -1,9 +1,8 @@
 import React from "react";
 import { Route, withRouter } from "react-router-dom";
 import { Query, ApolloConsumer } from "react-apollo";
-import { IS_LOGGED_IN } from "../graphql/queries";
-import SessionMaster from "../session/sessionMaster";
-import "../landing/landing.css"
+import { IS_LOGGED_IN } from "../../graphql/queries";
+import SessionMaster from "../../session/sessionMaster";
 
 const LandingNavbar = props => {
   return (
@@ -15,17 +14,20 @@ const LandingNavbar = props => {
               {({ data }) => {
                 if (data.isLoggedIn) {
                   return (
-                    <button
-                      className="langingNavButton"
-                      onClick={e => {
-                        e.preventDefault();
-                        localStorage.removeItem("auth-token");
-                        client.writeData({ data: { isLoggedIn: false } });
-                        props.history.push("/login");
-                      }}
-                    >
-                      Logout
-                    </button>
+                    <div id="sessionNavbarContainer">
+                      <div id="logoFont">goPüp</div>
+                      <button
+                        className="langingNavButton"
+                        onClick={e => {
+                          e.preventDefault();
+                          localStorage.removeItem("auth-token");
+                          client.writeData({ data: { isLoggedIn: false } });
+                          props.history.push("/login");
+                        }}
+                      >
+                        Logout
+                      </button>
+                    </div>
                   );
                 } else {
                   return (
