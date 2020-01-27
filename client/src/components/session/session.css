@@ -29,6 +29,7 @@
 
 #sessionLoginButton:hover {
   background: #F8F8F8;
+  cursor: pointer;
 }
 
 #sessionRegisterButton {
@@ -38,13 +39,13 @@
 
 #sessionRegisterButton:hover {
   background: #02B538; 
+  cursor: pointer;
 }
 
 #sessionBackgroundColor {
   
   /* background: rgb(227,233,240); */
   background: linear-gradient(0deg, #e3e9f0 0%, #f7fbfe 31%);
-
   height: calc(100vh - 55px);
   
 }
@@ -52,6 +53,7 @@
 #sessionBackgroundImage {
   background: url("https://cdn.pixabay.com/photo/2015/07/09/19/32/dog-838281_640.jpg") no-repeat right bottom;
   height: calc(100vh - 480px);
+  bottom: 0;
 }
 
 #sessionLoginFormWrapper {
@@ -59,6 +61,7 @@
   align-items: center;
   justify-content: center;
   height: 425px;
+  /* padding-top: 18%; */
 }
 
 #sessionLoginForm {

@@ -1,0 +1,7 @@
+FROM node:12.12.0-alpine as build-stage
+WORKDIR /client
+COPY package*.json /client/
+RUN npm install 
+COPY . /client/
+EXPOSE 3000/tcp
+CMD ["npm", "dev"]

@@ -13,7 +13,6 @@ class Register extends Component {
       accountType: "owner"
     };
 
-    // this.updateSelection = this.updateSelection.bind(this);
   }
 
   updateCache = (client, { data }) => {
@@ -27,11 +26,6 @@ class Register extends Component {
   update = field => {
     return e => this.setState({ [field]: e.target.value });
   };
-
-  // updateSelection(e) {
-  //   e.preventDefault();
-  //   this.setState({ accountType: e.taget.value });
-  // }
 
   render() {
     console.log(this.state)
