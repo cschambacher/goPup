@@ -8,8 +8,8 @@ class LandingFooter extends React.Component{
     return (
       <div id="landingFooterCont">
         <div id="landing-navGroup">
-          <div id="landingLogoFont">goPup</div>
-          <p>&copy; 2020 goPup</p>
+          <div id="landingLogoFont">goPüp</div>
+          <p>&copy; 2020 goPüp</p>
         </div>
         <div id="landing-navGroup">
           <div>
@@ -41,7 +41,7 @@ class LandingFooter extends React.Component{
             <ul>
               <li>
                 <a href="https://www.youtube.com/watch?v=PztO-OvzRyg">
-                  goPup Support
+                  goPüp Support
                 </a>
               </li>
             </ul>

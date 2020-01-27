@@ -7,8 +7,8 @@ class SessionFooter extends React.Component {
     return (
       <div id="sessionFooterCont">
         <div id="session-navGroup">
-          <div id="sessionLogoFont">goPup</div>
-          <p>&copy; 2020 goPup</p>
+          <div id="sessionLogoFont">goPüp</div>
+          <p>&copy; 2020 goPüp</p>
         </div>
         <div id="session-navGroup">
           <div>

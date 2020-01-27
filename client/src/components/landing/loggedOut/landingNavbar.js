@@ -15,7 +15,7 @@ const LandingNavbar = props => {
                 if (data.isLoggedIn) {
                   return (
                     <div id="sessionNavbarContainer">
-                      <div id="logoFont">goPup</div>
+                      <div id="logoFont">goPüp</div>
                       <button
                         className="langingNavButton"
                         onClick={e => {

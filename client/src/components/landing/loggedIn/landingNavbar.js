@@ -16,21 +16,35 @@ const LandingNavbar = props => {
                   return (
                     <div id="landingNavbarContainer">
                       <div id="landingNavbarLeftContainer">
-                        <div id="logoFont">goPup</div>
+                        <div id="logoFont">goPüp</div>
                         <div id="landingNavbarSearch">
-                          <i class="fas fa-search"></i>
+                          <i className="fas fa-search"></i>
                         </div>
                         <div 
                           id="landingNavbarMenuDashboard"
-                          class="landingNavbarMenu"
+                          className="landingNavbarMenu landingNavbarSelected"
                         >
                           Dashboard
+                          <div
+                            id="landingBarDashboardDrop"
+                            className="landingBarDrop"
+                          >
+                            <div className="dropItem">Create</div>
+                            <div className="dropItem">Stats</div>
+                        </div>
                         </div>
                         <div 
                           id="landingNavbarMenuExplore"
                           class="landingNavbarMenu"
                         >
                           Explore
+                          <div
+                            id="landingBarExploreDrop"
+                            className="landingBarDrop"
+                          >
+                            <div className="dropItem">Explore</div>
+                            <div className="dropItem">Search</div>
+                        </div>
                         </div>
                       </div>
                       <div>

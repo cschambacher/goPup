@@ -1,7 +1,6 @@
 .LandingNavCont {
   display: flex;
   position: fixed;
-  overflow-y: hidden;
   align-items: center;
   height: 56px;
   width: 100%;
@@ -23,6 +22,7 @@
 #landingNavbarSearch {
   color: #ababac;
   padding: 0px 15px;
+  margin-left: 15px;
 }
 
 #landingNavbarSearch:hover {
@@ -41,6 +41,69 @@
 .landingNavbarMenu {
   color: #7e7e7e;
   padding: 0px 15px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+
+  /* z-index: 0; */
+}
+
+.dropItem {
+  padding: 5px 15px;
+}
+
+.dropItem:hover {
+  background: rgb(226, 226, 226);
+}
+
+.landingNavbarMenu:hover {
+  border-left: 1px solid rgba(8, 73, 28, 0.1);
+  border-right: 1px solid rgba(8, 73, 28, 0.1);
+  padding-left: 14px;
+  padding-right: 14px;
+  border-bottom: 0px;
+  padding-top: 0px;
+
+  cursor: pointer;
+}
+
+.landingBarDrop {
+  position: absolute;
+  top: 52px;
+  display: none;
+  border: 1px solid rgba(8, 73, 28, 0.1);
+  border-top: 4px solid #F7F7FA;
+  
+
+  background: #F7F7FA;
+}
+
+#landingBarDashboardDrop {
+  left: 159px;
+  width: 105px;
+}
+
+#landingBarExploreDrop {
+  left: 266px;
+  width: 80px;
+}
+
+#landingNavbarMenuDashboard:hover > div#landingBarDashboardDrop {
+  display: block;
+}
+
+#landingNavbarMenuExplore:hover > div#landingBarExploreDrop {
+  display: block;
+}
+
+#landingNavbarMenuExplore:hover div.landingNavbarMenu {
+  border-bottom: 0px;
+}
+
+.landingNavbarSelected {
+  border-bottom: 3px solid #16C94C;
+  padding-top: 3px;
 }
 
 #landingNavbarLeftContainer {
@@ -50,7 +113,7 @@
 
 #landingHeroContainer {
   margin-top: 56px;
-  padding: 5px 15px;
+  padding: 25px 15px;
   background: #F7F7FA;
 
   display: flex;
@@ -80,7 +143,7 @@
   display: flex;
   border-top: 1px solid rgba(8, 73, 28, 0.1);
   justify-content: space-around;
-  padding: 70px 0px;
+  padding: 20px 0px;
   background: #F7F7FA;
   color: white;
   /* text-transform: uppercase; */
