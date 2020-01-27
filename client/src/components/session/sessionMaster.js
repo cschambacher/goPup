@@ -4,6 +4,7 @@ import Login from "./sessionLogin";
 import AuthRoute from "../util/route_util";
 import Register from "./sessionRegister";
 import SessionNavbar from "./sessionNavbar";
+import SessionFooter from "./sessionFooter";
 
 import "./session.css"
 
@@ -12,11 +13,7 @@ const SessionMaster = () => {
     <div id="sessionMasterContainer">
       <SessionNavbar />
       <Switch>
-        <AuthRoute 
-          exact path="/login" 
-          component={Login} 
-          routeType="auth" 
-        />
+        <AuthRoute exact path="/login" component={Login} routeType="auth" />
         <AuthRoute
           exact
           path="/register"
@@ -24,6 +21,7 @@ const SessionMaster = () => {
           routeType="auth"
         />
       </Switch>
+      <SessionFooter />
     </div>
   );
 };

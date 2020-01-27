@@ -29,3 +29,62 @@
 .langingNavButton:hover {
   cursor: pointer;
 }
+
+#landingFooterCont {
+  display: flex;
+  justify-content: space-around;
+  padding: 70px 0px;
+  margin-top: 56px;
+  background: #F7F7FA;
+  color: white;
+  /* text-transform: uppercase; */
+  font-family: MaisonNeue, "Segoe UI", "Helvetica Neue", -apple-system, system-ui, system-ui, Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#landingLogoFont {
+  font-family: 'Flavors', cursive;
+  font-size: 40px;
+  color: #16C94C;
+  margin-top: 10%;
+}
+
+#landing-navGroup {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  margin-top: 2%;
+}
+
+#landing-navGroup p{
+  color: #62626B; 
+  font-size: 9px;
+  padding: 20px 0px;
+}
+
+#landing-navGroup h5{
+  color: #78787F;
+  word-break: break-word;
+  line-height: 22px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#landing-navGroup ul {
+  list-style-type: none;
+  margin-left: -35%;
+  font-size: 15px;
+}
+
+#landing-navGroup li {
+  padding: 5px 0px;
+}
+
+#landing-navGroup a {
+  text-decoration: none;
+  color: rgb(171, 171, 172);
+  font-weight: 500;
+}
+
+#landing-navGroup a:hover {
+  color: #78787F;
+}
