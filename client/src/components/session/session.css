@@ -61,7 +61,6 @@
   align-items: center;
   justify-content: center;
   height: 425px;
-  /* padding-top: 18%; */
 }
 
 #sessionLoginForm {
@@ -105,4 +104,67 @@
   justify-content: center;
   padding-bottom: 20px;
   color: #084A1C;
+}
+
+/* --------Footer-------- */
+
+#sessionFooterCont {
+  display: flex;
+  justify-content: space-around;
+  padding: 70px 0px;
+  margin-top: 56px;
+  background-color: #252529;
+  color: white;
+  text-transform: uppercase;
+  font-family: MaisonNeue, "Segoe UI", "Helvetica Neue", -apple-system, system-ui, system-ui, Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin-top: 0px;
+}
+
+#sessionLogoFont {
+  font-family: 'Flavors', cursive;
+  font-size: 32px;
+  color: #16C94C;
+  margin-top: 2%;
+}
+
+#session-navGroup {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  margin-top: 2%;
+}
+
+#session-navGroup p{
+  color: #62626B; 
+  font-size: 9px;
+  padding: 20px 0px;
+}
+
+#session-navGroup h5{
+  color: #62626B;
+  word-break: break-word;
+  line-height: 22px;
+}
+
+#session-navGroup ul {
+  list-style-type: none;
+  margin-left: -30%;
+}
+
+#session-navGroup li {
+  padding: 10px 0px;
+}
+
+#session-navGroup i {
+  padding-right: 15px;
+}
+
+#session-navGroup a {
+  text-decoration: none;
+  color: white;
+}
+
+#session-navGroup a:hover {
+  text-decoration: underline;
+  color: white;
 }

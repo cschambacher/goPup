@@ -30,8 +30,6 @@ const LandingNavbar = props => {
                 } else {
                   return (
                     <div>
-                      {/* <Link to="/login">Login</Link>
-                      <Link to="/register">Register</Link> */}
                       <Route path="/login" component={SessionMaster} />
                     </div>
                   );
