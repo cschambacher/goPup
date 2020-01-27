@@ -12,12 +12,12 @@ const RouteSchema = new Schema({
     // required: true
   },
   start:{
-    type: [Number],
-    default: [-122.428093, 37.759703]
+    type: String,
+    default: "-122.428093 37.759703"
   },
   end:{
-    type: [Number],
-    default: [-122.405640, 37.778519]
+    type: String,
+    default: "-122.405640 37.778519"
   }
   
 });

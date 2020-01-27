@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLID, GraphQLInt, GraphQLString, GraphQLBoolean } = graphql;
+const { GraphQLObjectType, GraphQLID, GraphQLString } = graphql;
 const Route = mongoose.model("route");
 
 const RouteType = new GraphQLObjectType({
@@ -9,8 +9,8 @@ const RouteType = new GraphQLObjectType({
         _id: { type: GraphQLID },
         title: { type: GraphQLString },
         description: { type: GraphQLString },
-        start: { type: GraphQLInt },
-        end: { type: GraphQLInt }
+        start: { type: GraphQLString },
+        end: { type: GraphQLString }
     })
 });
 

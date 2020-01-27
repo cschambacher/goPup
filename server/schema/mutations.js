@@ -1,6 +1,6 @@
 const graphql = require("graphql");
 const mongoose = require("mongoose");
-const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLInt } = graphql;
+const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLFloat } = graphql;
 
 const UserType = require("./types/user_type");
 const User = require("../models/User");
@@ -17,8 +17,8 @@ const mutations = new GraphQLObjectType({
       args: {
         title: { type: GraphQLString },
         description: { type: GraphQLString },
-        start: { type: GraphQLInt },
-        end: { type: GraphQLInt }
+        start: { type: GraphQLString },
+        end: { type: GraphQLString }
       },
       async resolve(_, { title, description, start, end }, ctx) {
         const validUser = await AuthService.verifyUser({ token: ctx.token });
