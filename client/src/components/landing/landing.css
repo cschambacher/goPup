@@ -61,7 +61,7 @@
   padding: 20px 0px;
 }
 
-#landing-navGroup h5{
+#landing-navGroup h5 {
   color: #78787F;
   word-break: break-word;
   line-height: 22px;
@@ -71,8 +71,9 @@
 
 #landing-navGroup ul {
   list-style-type: none;
-  margin-left: -35%;
+  /* margin-left: -30%; */
   font-size: 15px;
+  padding-inline-start: 0px;
 }
 
 #landing-navGroup li {
@@ -87,4 +88,9 @@
 
 #landing-navGroup a:hover {
   color: #78787F;
+}
+
+#landing-navGroup .icon {
+  color: #78787F;
+  margin-right: 10px;
 }

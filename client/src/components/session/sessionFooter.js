@@ -13,6 +13,20 @@ class SessionFooter extends React.Component {
         <div id="session-navGroup">
           <div>
             <h5>Menu</h5>
+            <ul>
+              <li>
+                <Link to="#">Features (dead link)</Link>
+              </li>
+              <li>
+                <Link to="#">About (dead link)</Link>
+              </li>
+              <li>
+                <Link to="#">Terms (dead link)</Link>
+              </li>
+              <li>
+                <Link to="#">Privacy (dead link)</Link>
+              </li>
+            </ul>
           </div>
         </div>
         <div id="session-navGroup">
@@ -21,19 +35,19 @@ class SessionFooter extends React.Component {
             <ul>
               <li>
                 <i className="fab fa-facebook-f icon"></i>
-                <a href="https://www.facebook.com">Facebook</a>
+                <Link to="https://www.facebook.com">Facebook</Link>
               </li>
               <li>
                 <i className="fas fa-camera-retro icon"></i>
-                <a href="https://www.instagram.com">Instagram</a>
+                <Link to="https://www.instagram.com">Instagram</Link>
               </li>
               <li>
                 <i className="fab fa-twitter icon"></i>
-                <a href="https://www.twitter.com">Twitter</a>
+                <Link to="https://www.twitter.com">Twitter</Link>
               </li>
               <li>
                 <i className="fab fa-youtube icon"></i>
-                <a href="https://www.youtube.com">YouTube</a>
+                <Link to="https://www.youtube.com">YouTube</Link>
               </li>
             </ul>
           </div>

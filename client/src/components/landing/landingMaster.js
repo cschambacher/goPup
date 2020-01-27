@@ -1,17 +1,48 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+import { Query, ApolloConsumer } from "react-apollo";
+import { IS_LOGGED_IN } from "../graphql/queries";
 
-import LandingNavbar from "./landingNavbar";
-import LandingHero from "./landingHero";
-import LandingFooter from "./landingFooter";
+import LoggedInLandingNavbar from "./loggedIn/landingNavbar";
+import LoggedInLandingHero from "./loggedIn/landingHero";
+import LoggedInLandingFooter from "./loggedIn/landingFooter";
+
+import LoggedOutLandingNavbar from "./loggedOut/landingNavbar";
+import LoggedOutLandingHero from "./loggedOut/landingHero";
+import LoggedOutLandingFooter from "./loggedOut/landingFooter";
+
+import "./landing.css"
 
 const LandingMaster = () => {
   return (
     <div>
-      <LandingNavbar />
-      <LandingHero />
-      <LandingFooter />
+      <ApolloConsumer>
+        {client => (
+          <Query query={IS_LOGGED_IN}>
+            {({ data }) => {
+              if (data.isLoggedIn) {
+                return (
+                  <div>
+                    <LoggedInLandingNavbar />
+                    <LoggedInLandingHero />
+                    <LoggedInLandingFooter />
+                  </div>
+                );
+              } else {
+                return (
+                  <div>
+                    <LoggedOutLandingNavbar />
+                    <LoggedOutLandingHero />
+                    <LoggedOutLandingFooter />
+                  </div>
+                );
+              }
+            }}
+          </Query>
+        )}
+      </ApolloConsumer>
     </div>
   );
 };
 
-export default LandingMaster;
+export default withRouter(LandingMaster);

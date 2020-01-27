@@ -123,6 +123,7 @@
 #sessionLogoFont {
   font-family: 'Flavors', cursive;
   font-size: 32px;
+  text-transform: none;
   color: #16C94C;
   margin-top: 2%;
 }
@@ -148,7 +149,7 @@
 
 #session-navGroup ul {
   list-style-type: none;
-  margin-left: -30%;
+  padding-inline-start: 0px;
 }
 
 #session-navGroup li {
