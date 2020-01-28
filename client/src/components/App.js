@@ -13,9 +13,9 @@ const App = () => {
     <div>
       <Switch>
         <AuthRoute path="/routes/new" component={MapAPI} />
+        <Route exact path="/routes/:id" component={RouteDetail} />
         <AuthRoute path="/routes" component={MapIndex} />
         <Route path="/(register|login)" component={SessionMaster} />
-        <Route exact path="/routes/:id" component={RouteDetail} />
         <AuthRoute path="/" component={LandingMaster} />
       </Switch>
     </div>
