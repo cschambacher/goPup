@@ -8,6 +8,7 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import Routing from "leaflet-routing-machine";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "bootstrap/dist/css/bootstrap.css";
+import "reactstrap/dist/reactstrap";
 import {
   Collapse,
   Navbar,
@@ -214,20 +215,42 @@ class MapAPI extends React.Component {
           update={(cache, data) => this.updateCache(cache, data)}
         >
           {(newRoute, { data }) => (
-            <div>
-              <form onSubmit={e => this.handleSubmit(e, newRoute)}>
-                <input
-                  type="text"
-                  placeholder="Route Name"
-                  onChange={this.update("title")}
-                />
-                <textarea
-                  placeholder="Description"
-                  onChange={this.update("description")}
-                />
-                <button onClick={this.closeModal}>Cancel</button>
-                <button>Save</button>
-              </form>
+            <div className="modal-wrapper">
+              <div className="modal1">
+                <form
+                  className="modal-form"
+                  onSubmit={e => this.handleSubmit(e, newRoute)}
+                >
+                  <h2 className="modal-header">Save</h2>
+                  <p>
+                    Enter a name and description for your route below.
+                  </p>
+                  <div className="modal-input-cont">
+                    <label>Route Name(required)</label>
+                    <input
+                      type="text"
+                      placeholder="Route Name"
+                      onChange={this.update("title")}
+                    />
+                  </div>
+                  <div className="modal-input-cont">
+                    <label>Description</label>
+                    <textarea
+                      placeholder="Description"
+                      onChange={this.update("description")}
+                    />
+                  </div>
+                  <div className="modal-button-cont">
+                    <button
+                      className="modal-button cancel"
+                      onClick={this.closeModal}
+                    >
+                      Cancel
+                    </button>
+                    <button className="modal-button save">Save</button>
+                  </div>
+                </form>
+              </div>
             </div>
           )}
         </Mutation>
