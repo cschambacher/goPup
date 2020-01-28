@@ -8,6 +8,31 @@
 
 .sideCTA {
   border-bottom: 1px solid rgba(8, 73, 28, 0.05);
+
+  display: flex;
+}
+
+.sideCTABody {
+  padding: 10px 10px;
+}
+
+.sideCTAHeaderText {
+  padding-bottom: 5px;
+  font-weight: 500;
+}
+
+.CTALink {
+  color: #16C94C;
+  font-weight: 600;
+}
+
+.CTALink:hover {
+  color: #02B538;
+}
+
+.sideCTABodyText {
+  padding-bottom: 5px;
+  font-size: 14px;
 }
 
 .sideCTAIcon {
