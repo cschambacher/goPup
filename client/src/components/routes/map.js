@@ -50,7 +50,7 @@ class MapAPI extends React.Component{
       navToggle: false,
       navIsOpen: false
     };
-
+ 
     this.toggle = this.toggle.bind(this);
     this.isOpen = this.isOpen.bind(this);
   }
