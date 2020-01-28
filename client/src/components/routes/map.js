@@ -3,6 +3,8 @@ import L from "leaflet";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+import "leaflet-control-geocoder/dist/Control.Geocoder";
+import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import Routing from "leaflet-routing-machine";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "bootstrap/dist/css/bootstrap.css";
@@ -54,8 +56,7 @@ class MapAPI extends React.Component{
   }
   
   leafletElement(){
-    var map = L.map("mapId");
-    console.log(this.state.location)
+    var map = L.map("mapId").setView([0,0],2);
 
     L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png", {
       attribution: "© OpenStreetMap contributors"
@@ -63,11 +64,13 @@ class MapAPI extends React.Component{
 
     L.Routing.control({
       waypoints: [
-        L.latLng(37.799, -122.4014), 
-        L.latLng(37.789, -122.4074)
+        L.latLng(this.state.location.lat, this.state.location.lng),
+        L.latLng(this.state.location.lat, this.state.location.lng)
       ],
-      routeWhileDragging: true
+      routeWhileDragging: true,
+      geocoder: L.Control.Geocoder.nominatim()
     }).addTo(map);
+    // L.Control.geocoder().addTo(map);
   }
 
   componentDidMount(){
