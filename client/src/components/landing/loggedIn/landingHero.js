@@ -3,23 +3,25 @@
 import React from "react";
 import "./components/landingHero.css"
 
+import ActiveBodyCard from "./components/activeBody"
+import SideBarCard from "./components/sidebarCTA"
+import UserProfileCard from "./components/userProfileCard"
+
 class LandingHero extends React.Component{
   render(){
     return(
       <div id="landingHeroContainer">
-
         <div id="landingHeroLeftContainer" class="landingHeroBox">
-          Left bar
+          <UserProfileCard />
         </div>
 
         <div id="landingHeroCenterContainer" class="landingHeroBox">
-          Middle bar
+          <ActiveBodyCard />
         </div>
 
-        <div id="landingHeroRightContainer" class="landingHeroBox">
-          Right bar
+        <div id="landingHeroRightContainer" class="landingHeroSideBox">
+          <SideBarCard />
         </div>
-
       </div>
     )
   }
