@@ -13,13 +13,15 @@ const RouteDetail = props => {
 
                 return (
                     <div className="detail">
-                        <ul>
-                            <li>{data.route.name}</li>
-                            <li>
-                                <p>{data.route.description}</p>
-                            </li>
-                            <li>Helllooooooooooo</li>
-                        </ul>
+                        <h1>{data.route.title}</h1>
+                        <div className="detail-left">
+
+                        </div>
+                        <div className="detail-right">
+                            <h2>author</h2>
+                            <div className="stats"></div>
+                            <p>{data.route.description}</p>
+                        </div>                
                     </div>
                 );
             }}
