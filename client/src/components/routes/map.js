@@ -58,7 +58,7 @@ class MapAPI extends React.Component{
   leafletElement(){
     var map = L.map("mapId").setView([0,0],2);
 
-    L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png", {
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "© OpenStreetMap contributors"
     }).addTo(map);
 
