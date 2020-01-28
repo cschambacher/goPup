@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const RouteSchema = new Schema({
 
-  name: {
+  title: {
     type: String,
     required: true
   },
@@ -11,6 +11,14 @@ const RouteSchema = new Schema({
     type: String,
     // required: true
   },
+  start:{
+    type: String,
+    // default: "-122.428093 37.759703"
+  },
+  end:{
+    type: String,
+    // default: "-122.405640 37.778519"
+  }
   
 });
 
