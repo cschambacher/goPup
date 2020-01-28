@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, Link } from "react-router-dom";
 import { Query, ApolloConsumer } from "react-apollo";
 import { IS_LOGGED_IN } from "../../graphql/queries";
 import SessionMaster from "../../session/sessionMaster";
@@ -30,9 +30,24 @@ const LandingNavbar = props => {
                             className="landingBarDrop"
                           >
                             <div id="mask"></div>
-                            <div className="dropItem">Create</div>
-                            <div className="dropItem">Explore</div>
-                            <div className="dropItem">Stats</div>
+                            <Link
+                              style={{ "text-decoration": "none" }}
+                              to="/routes/new"
+                            >
+                              <div className="dropItem">Create</div>
+                            </Link>
+                            <Link 
+                              style={{"text-decoration":"none"}} 
+                              to="/routes/explore"
+                            >
+                              <div className="dropItem">Explore</div>
+                            </Link>
+                            <Link
+                              style={{ "text-decoration": "none" }}
+                              to="/routes/stats"
+                            >
+                              <div className="dropItem">Stats</div>
+                            </Link>
                           </div>
                         </div>
                         
@@ -64,13 +79,17 @@ const LandingNavbar = props => {
                             </div>
                           </div>
                         </div>
-
-                        <div
-                          id="landingNavbarMenuRoute"
-                          className="landingNavbarMenu"
+                        <Link
+                          style={{ "text-decoration": "none" }}
+                          to="/routes/new"
                         >
-                          <i class="far fa-plus-square"></i>
-                        </div>
+                          <div
+                            id="landingNavbarMenuRoute"
+                            className="landingNavbarMenu"
+                          >
+                            <i class="far fa-plus-square"></i>
+                          </div>
+                        </Link>
                       </div>
                     </div>
                   );
