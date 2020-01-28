@@ -1,6 +1,9 @@
 import React from "react";
-import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import "leaflet-routing-machine";
+import "leaflet-routing-machine/dist/leaflet-routing-machine";
+import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+import Routing from "leaflet-routing-machine";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "bootstrap/dist/css/bootstrap.css";
 import {
@@ -29,6 +32,8 @@ var myIcon = L.icon({
   // shadowAnchor: [22, 94]
 });
 
+
+
 class MapAPI extends React.Component{
   constructor(props){
     super(props);
@@ -47,35 +52,55 @@ class MapAPI extends React.Component{
     this.toggle = this.toggle.bind(this);
     this.isOpen = this.isOpen.bind(this);
   }
+  
+  leafletElement(){
+    var map = L.map("mapId");
+    console.log(this.state.location)
+
+    L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png", {
+      attribution: "© OpenStreetMap contributors"
+    }).addTo(map);
+
+    L.Routing.control({
+      waypoints: [
+        L.latLng(37.799, -122.4014), 
+        L.latLng(37.789, -122.4074)
+      ],
+      routeWhileDragging: true
+    }).addTo(map);
+  }
 
   componentDidMount(){
     // gets user location (if they allow it) with browser
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.setState({
-        location: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        },
-        haveUserLocation: true,
-        zoom: 13,
-      });
-      // console.log(position);
-    }, () => {
-      // console.log("User did not give location");
-      fetch("https://ipapi.co/json")
-        .then( res => res.json())
-        .then(location => {
-          // console.log(location);
-          this.setState({
-            location: {
-              lat: location.latitude,
-              lng: location.longitude
-            },
-            haveUserLocation: true,
-            zoom: 13
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        this.setState({
+          location: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          },
+          haveUserLocation: true,
+          zoom: 13
+        });
+        // console.log(position);
+      },
+      () => {
+        // console.log("User did not give location");
+        fetch("https://ipapi.co/json")
+          .then(res => res.json())
+          .then(location => {
+            // console.log(location);
+            this.setState({
+              location: {
+                lat: location.latitude,
+                lng: location.longitude
+              },
+              haveUserLocation: true,
+              zoom: 13
+            });
           });
-        })
-    }
+      },
+      this.leafletElement()
     );
   }
 
@@ -97,11 +122,8 @@ class MapAPI extends React.Component{
     }
   }
 
-  
-
-
   render(){
-    const position = [this.state.location.lat, this.state.location.lng]
+    const position = [this.state.location.lat, this.state.location.lng];
     return (
       <div className="map-cont">
         <Navbar className="map-nav" color="light" light expand="md">
@@ -145,7 +167,7 @@ class MapAPI extends React.Component{
             <button className="map-save-button">Save</button>
           </Collapse>
         </Navbar>
-
+      <div id="mapId">
         <Map className="map" center={position} zoom={this.state.zoom}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -153,14 +175,14 @@ class MapAPI extends React.Component{
           />
           {this.state.haveUserLocation ? (
             <Marker position={position} icon={myIcon}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
+              <div id="map"></div>
+              <Popup>Route Name</Popup>
             </Marker>
           ) : (
             " "
           )}
         </Map>
+          </div>
       </div>
     );
   }
