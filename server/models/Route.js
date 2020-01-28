@@ -13,11 +13,11 @@ const RouteSchema = new Schema({
   },
   start:{
     type: String,
-    default: "-122.428093 37.759703"
+    // default: "-122.428093 37.759703"
   },
   end:{
     type: String,
-    default: "-122.405640 37.778519"
+    // default: "-122.405640 37.778519"
   }
   
 });

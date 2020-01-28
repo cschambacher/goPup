@@ -1,6 +1,6 @@
 const graphql = require("graphql");
 const mongoose = require("mongoose");
-const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLFloat } = graphql;
+const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLFloat, GraphQLArray } = graphql;
 
 const UserType = require("./types/user_type");
 const User = require("../models/User");
@@ -20,16 +20,20 @@ const mutations = new GraphQLObjectType({
         start: { type: GraphQLString },
         end: { type: GraphQLString }
       },
-      async resolve(_, { title, description, start, end }, ctx) {
-        const validUser = await AuthService.verifyUser({ token: ctx.token });
-        if (validUser.loggedIn) {
-          return new Product({ title, description, start, end }).save();
-        } else {
-          throw new Error(
-            "Sorry, you need to be logged in to create a route."
-          );
-        }
+      resolve(_, { title, description, start, end }, ctx) {
+        console.log("resolve", start, typeof start);
+        return new Route({ title, description, start, end }).save();
       }
+      // async resolve(_, { title, description, start, end }, ctx) {
+      //   const validUser = await AuthService.verifyUser({ token: ctx.token });
+      //   if (validUser.loggedIn) {
+      //     return new Route({ title, description, start, end }).save();
+      //   } else {
+      //     throw new Error(
+      //       "Sorry, you need to be logged in to create a route."
+      //     );
+      //   }
+      // }
     },
     deleteRoute: {
       type: RouteType,
