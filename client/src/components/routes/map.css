@@ -16,7 +16,6 @@
   height: 100vh;
 }
 
-
 .map {
   /* height: 350px; */
   height: 100vh;
@@ -73,4 +72,79 @@
 .map-save-button:hover {
   background: #02B538; 
   cursor: pointer;
+}
+
+.modal-wrapper {
+  position: fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  top: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.modal1 {
+  position: absolute;
+  border: 1px solid white;
+  background: white;
+  border-radius: 5px;
+  padding: 20px;
+  height: 400px;
+  width: 600px;
+  color: black;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+  z-index: 10500;
+  overflow: none;
+}
+
+.modal-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.modal-header {
+  width: 100%;
+  font-weight: 700;
+}
+
+.modal-input-cont {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 75%;
+  margin: auto;
+}
+
+.modal-button-cont {
+  display: flex;
+  flex-direction: row;
+  margin-left: 400px
+}
+
+.modal-button {
+  padding: 5px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: 900px;
+  margin: 10px 5px;
+}
+
+.modal-button:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
+.cancel {
+  background-color: white;
+  color: black;
+}
+
+.save {
+  background-color: black;
+  color: white;
 }
