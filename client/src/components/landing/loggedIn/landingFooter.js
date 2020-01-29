@@ -67,9 +67,17 @@ class LandingFooter extends React.Component{
         </div>
         <div id="landing-navGroup">
           <div>
-            <h5>More</h5>
+            <h5>Credits</h5>
             <ul>
-              <li><Link to="/locals">Local (dead link)</Link></li>
+              <li>
+                <a 
+                  href="https://www.flaticon.com/authors/freepik"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Freepik Icons
+                </a>
+                </li>
             </ul>
           </div>
         </div>

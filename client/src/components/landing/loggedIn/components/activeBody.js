@@ -1,6 +1,7 @@
 import React from "react";
 import { FETCH_ROUTES } from "../../../graphql/queries";
 import { Query } from "react-apollo";
+import { Link } from "react-router-dom";
 
 class ActiveBodyCard extends React.Component {
   constructor (props) {
@@ -63,6 +64,14 @@ class ActiveBodyCard extends React.Component {
     return Number((earthRadiusKm * c).toFixed(1));
   }
 
+  shuffle (array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array
+  }
+
   render() {
     return (
       <div id="landingHeroActiveBodyCard">
@@ -104,14 +113,65 @@ class ActiveBodyCard extends React.Component {
               }).sort((a, b) => {
                 return (a.distance > b.distance) ? 1 : -1
               }).slice(0, 10).map(result => {
-                // console.log(result.distance)
+                const doggos = [
+                  'https://image.flaticon.com/icons/svg/1820/1820810.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820858.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820778.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820885.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820794.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820814.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820845.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820789.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820812.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820785.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820797.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820821.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820791.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820839.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820780.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820783.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820861.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820803.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820899.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820818.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820777.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820873.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820901.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820855.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820903.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820842.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820851.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820825.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820876.svg',
+                  'https://image.flaticon.com/icons/svg/1820/1820870.svg'
+                ]
+                
+                const dogAvatar = this.shuffle(doggos)[0]
+
                 return (
-                  <div className="routeRecommendationCard" key={result._id}>
-                    {result.title}
-                    <br />
-                    distance:{" "}
-                    {result.distance} km
-                  </div>
+                  <Link 
+                    key={result._id} 
+                    style={{ "textDecoration": "none" }}
+                    className="routeRecommendationCard" 
+                    to={`/routes/${result._id}`}
+                  >
+                    <div className="flex-center">
+                      <img className="doggoAvatar" src={dogAvatar} />
+                    </div>
+
+                    <div className="flex-center doggoRouteTitle">
+                      {result.title.length > 12 ? result.title.slice(0, 12) + "..." : result.title}
+                    </div>
+                    
+                    <div className="doggoRouteFooter flex-center">
+                      <small>
+                        {result.distance < 20 ? "Only " : ""}
+                        {result.distance > 50 && result.distance < 100 ? "Darn, " : ""}
+                        {result.distance >= 100 ? "Yikes, " : ""}
+                        {result.distance} km away!
+                      </small>
+                    </div>
+                  </Link>
                 );
               })
             }}
