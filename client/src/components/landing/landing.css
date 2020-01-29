@@ -52,11 +52,14 @@
 .dropItem {
   padding: 5px 15px;
   margin-bottom: 5px;
+  color: #7e7e7e;
+  text-decoration: none;
 }
 
 .dropItem:hover {
   background: rgb(226, 226, 226);
   color: #02B538;
+  text-decoration: none;
 }
 
 .landingNavbarMenu:hover {
@@ -91,7 +94,7 @@
 #userDropMask {
   position: relative;
   top:-2px;
-  left:29px;
+  left:49px;
   width:44px;
   height: 5px;
   background-color:#F7F7FA;
@@ -113,7 +116,7 @@
 
 #landingBarUserDrop {
   right: 59px;
-  width: 80px;
+  width: 100px;
 }
 
 #landingNavbarMenuDashboard:hover > div#landingBarDashboardDrop {
@@ -147,7 +150,7 @@
   margin-top: 56px;
   padding: 25px 15px;
   background: #F7F7FA;
-
+  height: calc(100vh - 299px);
   display: flex;
   justify-content: space-around;
 }

@@ -1,18 +1,111 @@
 .landingHeroBox {
-  padding: 5px 15px;
+  padding: 15px 15px;
   width: 250px;
+  border-radius: 5px; 
+  background: white;
+  box-shadow: 2px 2px 20px rgba(8, 74, 28, 0.05);
+}
+
+.sideCTA {
+  border-bottom: 1px solid rgba(8, 73, 28, 0.05);
+
+  display: flex;
+}
+
+.sideCTABody {
+  padding: 10px 10px;
+}
+
+.sideCTAHeaderText {
+  padding-bottom: 5px;
+  font-weight: 500;
+}
+
+.CTALink {
+  color: #16C94C;
+  font-weight: 600;
+}
+
+.CTALink:hover {
+  color: #02B538;
+}
+
+.sideCTABodyText {
+  padding-bottom: 5px;
+  font-size: 14px;
+}
+
+.sideCTAIcon {
+  font-size: 24px;
+  color: #16C94C;
+
+  background: white;
+
+  width: 50px;
+  height: 50px;
+  padding: 5px 10px;
+
+  margin: 10px 0px;
+
+  border-radius: 25px;
+  border: 2px solid #02B538;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borderless {
+  border: 0px;
+}
+
+.landingHeroSideBox {
+  padding: 15px 15px;
+  width: 250px;
+  border-radius: 5px; 
+  /* background: white; */
+  /* box-shadow: 2px 2px 20px rgba(8, 74, 28, 0.05); */
 }
 
 #landingHeroLeftContainer {
-  border: 2px solid red;
+  height: 145px;
 }
 
 #landingHeroCenterContainer {
-  border: 2px solid blue;
   width: 600px;
 }
 
-#landingHeroRightContainer {
-  border: 2px solid green;
+#userCardIcon {
+  padding-top: 5px;
+}
 
+#landingHeroRightContainer {
+
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+#userCardFooter {
+  border-top: 1px solid rgba(8, 73, 28, 0.1);
+  padding: 10px 10px;
+  padding-bottom: 0px;
+  margin-top: 10px;
+  color: #16C94C;
+}
+
+#userCardFooter:hover {
+  color: #02B538;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
 }
