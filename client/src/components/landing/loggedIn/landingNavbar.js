@@ -18,9 +18,14 @@ const LandingNavbar = props => {
                       <div id="landingNavbarLeftContainer">
                         <div id="logoFont">goPüp</div>
                         <div id="landingNavbarSearch">
-                          <i className="fas fa-search"></i>
+                          <Link
+                            style={{ "text-decoration": "none" }}
+                            to="/routes/explore"
+                          >
+                            <i id="searchIcon" className="fas fa-search"></i>
+                          </Link>
                         </div>
-                        <div 
+                        <div
                           id="landingNavbarMenuDashboard"
                           className="landingNavbarMenu landingNavbarSelected"
                         >
@@ -36,8 +41,8 @@ const LandingNavbar = props => {
                             >
                               <div className="dropItem">Create</div>
                             </Link>
-                            <Link 
-                              style={{"text-decoration":"none"}} 
+                            <Link
+                              style={{ "text-decoration": "none" }}
                               to="/routes/explore"
                             >
                               <div className="dropItem">Explore</div>
@@ -50,7 +55,6 @@ const LandingNavbar = props => {
                             </Link>
                           </div>
                         </div>
-                        
                       </div>
                       <div id="landingNavbarLeftContainer">
                         <div
@@ -71,7 +75,9 @@ const LandingNavbar = props => {
                               onClick={e => {
                                 e.preventDefault();
                                 localStorage.removeItem("auth-token");
-                                client.writeData({ data: { isLoggedIn: false } });
+                                client.writeData({
+                                  data: { isLoggedIn: false }
+                                });
                                 props.history.push("/login");
                               }}
                             >

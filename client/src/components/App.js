@@ -18,7 +18,6 @@ const App = () => {
         <Route exact path="/routes/:id" component={RouteDetail} />
         <AuthRoute path="/routes" component={MapIndex} />
         <Route path="/(register|login)" component={SessionMaster} />
-       
         <AuthRoute path="/" component={LandingMaster} />
       </Switch>
     </div>

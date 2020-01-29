@@ -12,8 +12,28 @@
   display: flex;
 }
 
+#routesNearYouHeader {
+  font-weight: 600;
+  color: #02B538;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+#routesNearYouBody {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .sideCTABody {
   padding: 10px 10px;
+}
+
+.routeRecommendationCard {
+  width: 31%;
+  height: 200px;
+  border: 1px solid rgba(8, 73, 28, 0.1);
+  margin: 5px;
 }
 
 .sideCTAHeaderText {
@@ -73,6 +93,19 @@
 
 #landingHeroCenterContainer {
   width: 600px;
+  min-height: 270px;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-height: 650px) {
+  #landingFooterCont {
+    display: none !important;
+  }
+
+  #landingHeroContainer {
+    height: calc(100vh - 56px) !important;
+  }
+
 }
 
 #userCardIcon {
