@@ -19,7 +19,10 @@ const cache = new InMemoryCache({
 });
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:5000/graphql"
+  uri: "http://localhost:5000/graphql",
+  headers: {
+    authorization: localStorage.getItem("auth-token")
+  }
 });
 
 // make sure we log any additional errors we receive
@@ -30,9 +33,9 @@ const errorLink = onError(({ graphQLErrors }) => {
 const client = new ApolloClient({
   link: ApolloLink.from([errorLink, httpLink]),
   cache,
-  headers: {
-    authorization: localStorage.getItem("auth-token")
-  },
+  // headers: {
+  //   authorization: localStorage.getItem("auth-token")
+  // },
   onError: ({ networkError, graphQLErrors }) => {
     console.log("graphQLErrors", graphQLErrors);
     console.log("networkError", networkError);
@@ -43,7 +46,8 @@ const token = localStorage.getItem("auth-token");
 
 cache.writeData({
   data: {
-    isLoggedIn: Boolean(token)
+    isLoggedIn: Boolean(token),
+    currUserId: null
   }
 });
 
@@ -52,7 +56,7 @@ if (token) {
     .mutate({ mutation: VERIFY_USER, variables: { token } })
     .then(({ data }) => {
       cache.writeData({
-        data: { isLoggedIn: data.verifyUser.loggedIn }
+        data: { isLoggedIn: data.verifyUser.loggedIn, currUserId: data.verifyUser.id }
       });
     });
 }

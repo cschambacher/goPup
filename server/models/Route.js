@@ -18,6 +18,10 @@ const RouteSchema = new Schema({
   end:{
     type: String,
     // default: "-122.405640 37.778519"
+  },
+  user: {
+    type: Schema.Types.ObjectId, 
+    ref: "user" 
   }
   
 });

@@ -13,6 +13,7 @@ const RouteDetail = props => {
                 console.log(data.route);
                 return (
                     <div className="route-detail">
+                        <p></p>
                         <h1>{data.route.title}</h1>
                         <div className="route-detail-container">
                             <div className="route-detail-left">
