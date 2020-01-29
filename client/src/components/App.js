@@ -4,14 +4,14 @@ import AuthRoute from "./util/route_util";
 import SessionMaster from "./session/sessionMaster";
 import LandingMaster from "./landing/landingMaster";
 import MapAPI from "./routes/map";
-import MapIndex from "./routes/mapIndex";
+import RouteIndex from "./routes/routeIndex";
 
 const App = () => {
   return (
     <div>
       <Switch>
         <AuthRoute path="/routes/new" component={MapAPI} />
-        <AuthRoute path="/routes" component={MapIndex} />
+        <AuthRoute path="/routes" component={RouteIndex} />
         <Route path="/(register|login)" component={SessionMaster} />
         <AuthRoute path="/" component={LandingMaster} />
       </Switch>

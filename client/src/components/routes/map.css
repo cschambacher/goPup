@@ -148,3 +148,15 @@
   background-color: black;
   color: white;
 }
+
+.map-index-cont {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.map-card {
+  height: 225px;
+  width: 175px;
+  margin: 5px;
+}
