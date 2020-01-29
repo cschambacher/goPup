@@ -30,4 +30,19 @@ export const FETCH_ROUTE = gql`
     }
   }
 `
+export const FETCH_USER = gql`
+  query fetchUser($id: ID!) {
+    user(_id: $id) {
+      _id
+      username
+      routes {
+        _id
+        title
+        description
+        start
+        end
+      }
+    }
+  }
+`
 
