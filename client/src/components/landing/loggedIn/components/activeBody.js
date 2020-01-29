@@ -66,7 +66,7 @@ class ActiveBodyCard extends React.Component {
   render() {
     return (
       <div id="landingHeroActiveBodyCard">
-        <div id="routesNearYouHeader">NEARBY ROUTES</div>
+        <div id="routesNearYouHeader">RECOMMENDED ROUTES</div>
         <div id="routesNearYouBody">
           <Query query={FETCH_ROUTES}>
             {({ loading, error, data }) => {
@@ -75,24 +75,45 @@ class ActiveBodyCard extends React.Component {
 
               return data.routes.map(({ _id, title, start, end }) => {
                 const startLat = parseFloat(start.split(",")[0]);
-                const startLon = parseFloat(start.split(",")[1]);
+                const startLng = parseFloat(start.split(",")[1]);
                 const endLat = parseFloat(end.split(",")[0]);
-                const endLon = parseFloat(end.split(",")[1]);
+                const endLng = parseFloat(end.split(",")[1]);
 
+                const myLat = this.state.location.lat
+                const myLng = this.state.location.lng
+
+                const distFromStart = this.distanceInKmBetweenEarthCoordinates(startLat, startLng, myLat, myLng)
+
+                const distFromEnd = this.distanceInKmBetweenEarthCoordinates(endLat, endLng, myLat, myLng)
+
+                const result = {
+                  distance: distFromEnd,
+                  point: "end", 
+                  _id: _id,
+                  title: title
+                }
+
+                if (distFromStart < distFromEnd) {
+                  result["point"] = "start"
+                  result["distance"] = distFromStart
+                }
+
+                return result
+
+                
+              }).sort((a, b) => {
+                return (a.distance > b.distance) ? 1 : -1
+              }).slice(0, 10).map(result => {
+                // console.log(result.distance)
                 return (
-                  <div className="routeRecommendationCard" key={_id}>
-                    {title}
+                  <div className="routeRecommendationCard" key={result._id}>
+                    {result.title}
                     <br />
                     distance:{" "}
-                    {this.distanceInKmBetweenEarthCoordinates(
-                      startLat,
-                      startLon,
-                      endLat,
-                      endLon
-                    )} km
+                    {result.distance} km
                   </div>
                 );
-              });
+              })
             }}
           </Query>
         </div>
