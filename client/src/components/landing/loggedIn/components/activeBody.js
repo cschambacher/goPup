@@ -147,6 +147,7 @@ class ActiveBodyCard extends React.Component {
                 ]
                 
                 const dogAvatar = this.shuffle(doggos)[0]
+                const poopCount = this.shuffle([1,2,3,4,5,6,7,8,9,10,3,4,7,8,9,12,10,2,5,7,8,9,3,2,10,11,13])[0]
 
                 return (
                   <Link 
@@ -156,11 +157,23 @@ class ActiveBodyCard extends React.Component {
                     to={`/routes/${result._id}`}
                   >
                     <div className="flex-center">
-                      <img className="doggoAvatar" src={dogAvatar} />
+                      <img className="doggoAvatar" src={dogAvatar} alt="Cute doggo icon!" />
                     </div>
 
                     <div className="flex-center doggoRouteTitle">
                       {result.title.length > 12 ? result.title.slice(0, 12) + "..." : result.title}
+                    </div>
+
+                    <div className="flex-center">
+                      <div className="doggoRoutePoopIcon">
+                        <i className="fas fa-poop smolIcon"></i>
+                      </div>
+                      <div>
+                        {poopCount} püps
+                      </div>
+                      <div className="doggoRoutePoopIcon">
+                        <i className="fas fa-poop"></i>
+                      </div>
                     </div>
                     
                     <div className="doggoRouteFooter flex-center">

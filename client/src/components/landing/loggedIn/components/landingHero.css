@@ -166,6 +166,13 @@
   font-weight: 600;
 }
 
+.doggoRoutePoopIcon {
+  margin: 0px 5px;
+  /* font-size: 14px; */
+  display: flex;
+  align-items: center;
+}
+
 .flex-center {
   display: flex;
   justify-content: center;
