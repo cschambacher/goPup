@@ -48,7 +48,6 @@ class MapIndex extends React.Component {
 // }
 
   render(){
-
     return (
       <div>
         <div>
@@ -60,29 +59,13 @@ class MapIndex extends React.Component {
             {({ loading, error, data }) => {
               if (loading) return <h1>Loading...</h1>;
               if (error) return <h1>{error}</h1>;
-              
+              console.log(data.routes)
               return data.routes.map(({ _id, title, start, end }) => (
-                <li key={_id}>
-                  <Thumbnail idx={`${_id}`} start={start} end={end}/>
-                  {/* <div id="mapId">
-                    <Map
-                      className="map-card"
-                      center={this.getCoords(start)}
-                      zoom={this.state.zoom}
-                    >
-                      <TileLayer
-                        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                      />
-
-                      {this.leafletElement(
-                        this.getCoords(start),
-                        this.getCoords(end)
-                      )}
-                      <Marker position={this.getCoords(start)} icon={myIcon}/>
-                    <Marker position={this.getCoords(end)} icon={myIcon}/>
-                    </Map>
-                  </div> */}
+                <li className="map-card-li" key={_id}>
+                  <Thumbnail idx={`${_id}`} start={start} end={end} />
+                  <div className="map-thumb-footer">
+                    <h6>{title}</h6>
+                  </div>
                 </li>
               ));
             }}

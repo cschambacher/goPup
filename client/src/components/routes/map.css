@@ -153,10 +153,32 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none;
+  justify-content: center;
 }
 
 .map-card {
   height: 225px;
   width: 175px;
-  margin: 5px;
 }
+
+.map-card-li {
+  margin: 15px;
+}
+
+.map-thumb-footer {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  background-color: #F7F7F7;
+  padding: 5px;
+}
+
+.map-thumb-footer h6 {
+  font-weight: 600;
+}
+
+/* hides the leaflet element control button */
+.leaflet-control-container .leaflet-routing-container-hide {
+    display: none;
+}
+

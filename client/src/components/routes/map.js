@@ -84,7 +84,7 @@ class MapAPI extends React.Component {
         "routeselected",
         function(e) {
           var route = e.route;
-          console.log(route);
+          // console.log(route);
           // routeArray = routeControl.getWaypoints();
 
           var start = Object.values(route.inputWaypoints[0].latLng).toString();
