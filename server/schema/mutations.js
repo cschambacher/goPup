@@ -20,20 +20,26 @@ const mutations = new GraphQLObjectType({
         start: { type: GraphQLString },
         end: { type: GraphQLString }
       },
-      resolve(_, { title, description, start, end }, ctx) {
-        console.log("resolve", start, typeof start);
-        return new Route({ title, description, start, end }).save();
+      async resolve(_, { title, description, start, end }, ctx) {
+        // console.log("resolve", ctx);
+        const validUser = await AuthService.verifyUser({ token: ctx.token });
+        // console.log("newRoute", validUser);
+        if (validUser.loggedIn) {
+          const currUserId = validUser.id;
+          // console.log("resolve", validUser);
+          return new Route({ title, description, start, end, user: currUserId }).save()
+            .then(route => User.findById(currUserId)
+            .then(user => {
+              user.routes.push(route)
+              user.save()
+              return user
+            }))
+        } else {
+          throw new Error(
+            "Sorry, you need to be logged in to create a route."
+          );
+        }
       }
-      // async resolve(_, { title, description, start, end }, ctx) {
-      //   const validUser = await AuthService.verifyUser({ token: ctx.token });
-      //   if (validUser.loggedIn) {
-      //     return new Route({ title, description, start, end }).save();
-      //   } else {
-      //     throw new Error(
-      //       "Sorry, you need to be logged in to create a route."
-      //     );
-      //   }
-      // }
     },
     deleteRoute: {
       type: RouteType,
