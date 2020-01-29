@@ -24,24 +24,43 @@ class Thumbnail extends React.Component{
       zoom: 12,
       start: this.props.start,
       end: this.props.end,
-      distance: ""
+      title: this.props.title,
+      distance: "",
     }
 
     this.getCoords = this.getCoords.bind(this);
+    // this.getDistance = this.getDistance.bind(this);
+    this.distanceInKmBetweenEarthCoordinates = this.distanceInKmBetweenEarthCoordinates.bind(this)
+
   }
     
     getCoords(str){
         return str.split(",").map(coord => parseFloat(coord))
     }
 
+    // setDistance(e){
+    //       var routes = e.routes;
+    //       var summary = routes[0].summary;
+    //       var distance = summary.totalDistance.toString()
+    //       console.log(typeof distance === "string")
+    //       // this.setState({ distance: distance })
+    // }
+
+    // getDistance(str){
+    //   this.setState({ distance: str })
+    // }
+
     componentDidMount(){
       
     var map = L.map(`map-${this.props.idx}`).setView([0, 0], 12);
-
-      // debugger
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors"
-      }).addTo(map);
+    
+    // debugger
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap contributors"
+    }).addTo(map);
+    
+      // let distance;
+      // console.log("distance:",distance)
 
       var control = L.Routing.control({
         waypoints: [
@@ -54,40 +73,93 @@ class Thumbnail extends React.Component{
             this.getCoords(this.state.end)[1]
           )
         ],
+        
         // useZoomParameter: false,
-        // fitSelectedRoutes: false,
+        // fitSelectedRoutes: 'smart',
         // routeWhileDragging: false
       }).addTo(map);
       control.hide();
       control
         .on("routesfound", function(e) {
           var routes = e.routes;
+          // console.log("routes:", routes)
           var summary = routes[0].summary;
-          var distance = summary.totalDistance
-          console.log(distance)
-        })      
+          console.log("summary:", summary)
+          var distance = (summary.totalDistance/1000).toString()
+          // console.log(typeof distance === "string")
+          // alert("distance:" + distance + " km")
+          // console.log(distance)
+          // this.setState({ distance: distance })
+          // this.getDistance(distance)
+        },
+        console.log("state-dist",this.state.distance) )
+        // console.log(this.state.distance)    
     }
+
+  degreesToRadians(degrees) {
+    return (degrees * Math.PI) / 180;
+  }
+
+  distanceInKmBetweenEarthCoordinates(lat1, lon1, lat2, lon2) {
+    const earthRadiusKm = 6371;
+
+    const dLat = this.degreesToRadians(lat2 - lat1);
+    const dLon = this.degreesToRadians(lon2 - lon1);
+
+    lat1 = this.degreesToRadians(lat1);
+    lat2 = this.degreesToRadians(lat2);
+
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return Number((earthRadiusKm * c).toFixed(1));
+  }
 
     render(){
-      console.log(this.state.distance)
-        return (
-          <div id={`map-${this.props.idx}`}>
-            <Map
-              className="map-card"
-              center={this.getCoords(this.state.start)}
-              zoom={this.state.zoom}
-            >
-              {/* <TileLayer
-                attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              /> */}
-              {/* <Marker position={this.getCoords(this.state.start)} icon={myIcon} />
-              <Marker position={this.getCoords(this.state.end)} icon={myIcon} /> */}
-            </Map>
-          </div>
-        );
-        
-    }
-}
+      // console.log(this.props)
+      const startLat = parseFloat(this.state.start.split(",")[0]);
+      const startLon = parseFloat(this.state.start.split(",")[1]);
+      const endLat = parseFloat(this.state.end.split(",")[0]);
+      const endLon = parseFloat(this.state.end.split(",")[1]);
 
+        return (
+          <div>
+            <div id={`map-${this.props.idx}`}>
+              <Map
+                className="map-card"
+                center={this.getCoords(this.state.start)}
+                zoom={this.state.zoom}
+              >
+                {/* <TileLayer
+                  attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                /> */}
+
+                {/* <Marker position={this.getCoords(this.state.start)} icon={myIcon} />
+                <Marker position={this.getCoords(this.state.end)} icon={myIcon} /> */}
+
+              </Map>
+            </div>
+              <div className="map-thumb-footer">
+                <h6>{this.state.title}</h6>
+                <div className="map-thumb-footer-dist-cont">
+                <div className="map-thumb-footer-dist">
+                    {this.distanceInKmBetweenEarthCoordinates(
+                      startLat,
+                      startLon,
+                      endLat,
+                      endLon
+                      )} km
+                  </div>
+                  <label>Distance</label>
+                </div>
+              </div>
+          </div>
+          );
+          
+      }
+  }
+  
 export default Thumbnail;

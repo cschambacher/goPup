@@ -13,12 +13,12 @@
 }
 
 .map-cont {
-  height: 100vh;
+  height: 80vh;
 }
 
 .map {
   /* height: 350px; */
-  height: 100vh;
+  height: 80vh;
 }
 
 .map-nav {
@@ -26,8 +26,9 @@
   display: flex;
   align-items: center;
   text-align: left;
-  top: 0;
   color: #6E6E6E;
+  margin-top: 56px;
+
 }
 
 .map-search-cont {
@@ -149,11 +150,43 @@
   color: white;
 }
 
+.routeIndex-header {
+  display: flex;
+  flex-direction: column;
+  height: 180px;
+  justify-content: center;
+  margin-left: 5%;
+  margin-top: 56px;
+}
+
+.routeIndex-create-button {
+  border-radius: 5px;
+  width: 155px;
+  height: 40px;
+  background-color: #16C94C;
+}
+
+.routeIndex-create-button a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+.routeIndex-create-button:hover {
+  background: #02B538; 
+  cursor: pointer;
+}
+
 .map-index-cont {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   justify-content: center;
+  width: 90%;
+  margin: auto;
+  padding-top: 45px;
+  padding-left: 0px;
+  border-top: 1px solid gray;
 }
 
 .map-card {
@@ -171,6 +204,21 @@
   height: 150px;
   background-color: #F7F7F7;
   padding: 5px;
+}
+
+.map-thumb-footer h6 {
+  padding: 5px;
+}
+
+.map-thumb-footer-dist-cont {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.map-thumb-footer-dist {
+  font-size: 24px;
+  font-weight: 300;
 }
 
 .map-thumb-footer h6 {
