@@ -26,7 +26,7 @@
 }
 
 #landingNavbarSearch:hover {
-  color: #02B538;
+  color: #00962d;
   cursor: pointer;
 }
 
@@ -58,7 +58,7 @@
 
 .dropItem:hover {
   background: rgb(226, 226, 226);
-  color: #02B538;
+  color: #00962d;
   text-decoration: none;
 }
 
@@ -111,7 +111,7 @@
 }
 
 #landingNavbarMenuRoute:hover, #landingNavbarMenuUser:hover > i {
-  color: #02B538;
+  color: #00962d;
 }
 
 #landingBarUserDrop {
@@ -160,7 +160,7 @@
 }
 
 #searchIcon:hover {
-  color: #02B538;
+  color: #00962d;
 }
 
 .LandingNavSubCont {

@@ -19,7 +19,7 @@ const LandingNavbar = props => {
                         <div id="logoFont">goPüp</div>
                         <div id="landingNavbarSearch">
                           <Link
-                            style={{ "text-decoration": "none" }}
+                            style={{ "textDecoration": "none" }}
                             to="/routes/explore"
                           >
                             <i id="searchIcon" className="fas fa-search"></i>
@@ -36,19 +36,19 @@ const LandingNavbar = props => {
                           >
                             <div id="mask"></div>
                             <Link
-                              style={{ "text-decoration": "none" }}
+                              style={{ "textDecoration": "none" }}
                               to="/routes/new"
                             >
                               <div className="dropItem">Create</div>
                             </Link>
                             <Link
-                              style={{ "text-decoration": "none" }}
+                              style={{ "textDecoration": "none" }}
                               to="/routes/explore"
                             >
                               <div className="dropItem">Explore</div>
                             </Link>
                             <Link
-                              style={{ "text-decoration": "none" }}
+                              style={{ "textDecoration": "none" }}
                               to="/routes/stats"
                             >
                               <div className="dropItem">Stats</div>
@@ -86,14 +86,14 @@ const LandingNavbar = props => {
                           </div>
                         </div>
                         <Link
-                          style={{ "text-decoration": "none" }}
+                          style={{ "textDecoration": "none" }}
                           to="/routes/new"
                         >
                           <div
                             id="landingNavbarMenuRoute"
                             className="landingNavbarMenu"
                           >
-                            <i class="far fa-plus-square"></i>
+                            <i className="far fa-plus-square"></i>
                           </div>
                         </Link>
                       </div>

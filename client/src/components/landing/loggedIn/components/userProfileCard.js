@@ -6,7 +6,7 @@ class UserProfileCard extends React.Component {
     return (
       <div id="landingHeroUserProfileCard">
         <div id="userCardIcon" className="flex-center">
-          <i class="fas fa-paw"></i>
+          <i className="fas fa-paw"></i>
         </div>
         <div className="flex-center">
           username
@@ -17,12 +17,12 @@ class UserProfileCard extends React.Component {
           <div>routes</div>
         </div>
         <Link 
-          style={{ "text-decoration": "none" }}
+          style={{ "textDecoration": "none" }}
           to="/routes/new"
         >
           <div id="userCardFooter" className="flex-between">
             <div><small>Add a route</small></div>
-            <div><i class="fas fa-chevron-right"></i></div>
+            <div><i className="fas fa-chevron-right"></i></div>
           </div>
         </Link>
       </div>

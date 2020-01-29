@@ -2,7 +2,7 @@ import React from 'react';
 import { FETCH_ROUTE } from '../graphql/queries';
 import { withRouter } from "react-router-dom";
 import { Query } from 'react-apollo';
-
+import Thumbnail from "./routeThumb";
 
 const RouteDetail = props => {
     return (
@@ -10,18 +10,26 @@ const RouteDetail = props => {
             {({ loading, error, data }) => {
                 if (loading) return <p>Loading...</p>;
                 if (error) return <p>Error</p>;
-
+                console.log(data.route);
                 return (
-                    <div className="detail">
+                    <div className="route-detail">
+                        <p></p>
                         <h1>{data.route.title}</h1>
-                        <div className="detail-left">
-
-                        </div>
-                        <div className="detail-right">
-                            <h2>author</h2>
-                            <div className="stats"></div>
-                            <p>{data.route.description}</p>
-                        </div>                
+                        <div className="route-detail-container">
+                            <div className="route-detail-left">
+                                <div className="map-route-detail" key={data.route._id}>
+                                    <Thumbnail idx={`${data.route._id}`} start={data.route.start} end={data.route.end} />
+                                </div>
+                            </div>
+                            <div className="route-detail-right">
+                                <h2>author</h2>
+                                <div className="stats">
+                                    distance: 
+                                    nr. of average poops:
+                                </div>
+                                <p>{data.route.description}</p>
+                            </div> 
+                        </div>               
                     </div>
                 );
             }}
