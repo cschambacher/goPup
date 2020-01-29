@@ -5,6 +5,7 @@ import { IS_LOGGED_IN } from "../../graphql/queries";
 import SessionMaster from "../../session/sessionMaster";
 
 const LandingNavbar = props => {
+  console.log(localStorage)
   return (
     <div className="LandingNavMainCont">
       <div className="LandingNavCont">
@@ -13,6 +14,7 @@ const LandingNavbar = props => {
             <Query query={IS_LOGGED_IN}>
               {({ data }) => {
                 if (data.isLoggedIn) {
+                  console.log(props)
                   return (
                     <div id="landingNavbarContainer">
                       <div id="landingNavbarLeftContainer">
@@ -67,8 +69,8 @@ const LandingNavbar = props => {
                             className="landingBarDrop"
                           >
                             <div id="userDropMask"></div>
-                            <div className="dropItem">Profile</div>
-                            <div className="dropItem">Settings</div>
+                            {/* <div className="dropItem">Profile</div>
+                            <div className="dropItem">Settings</div> */}
                             <div
                               className="dropItem"
                               id="sessionLogoutButton"

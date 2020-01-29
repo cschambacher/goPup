@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Query } from "react-apollo";
+import { FETCH_USER } from "../../../graphql/queries"
 
 class UserProfileCard extends React.Component {
   render() {
@@ -9,7 +11,17 @@ class UserProfileCard extends React.Component {
           <i className="fas fa-paw"></i>
         </div>
         <div className="flex-center">
-          username
+          <Query query={FETCH_USER}>
+            {({ data }) => {
+              console.log(data)
+              return (
+                <div>
+                  test
+                </div>
+              );
+            }
+            }
+          </Query>
         </div>
         <div className="flex-around">
           <div>following</div>

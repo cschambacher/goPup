@@ -107,8 +107,9 @@
 
 #landingHeroCenterContainer {
   width: 600px;
-  min-height: 270px;
-  overflow-y: scroll;
+  height: 270px;
+  /* min-height: 270px; */
+  /* overflow-y: scroll; */
 }
 
 @media only screen and (max-height: 650px) {

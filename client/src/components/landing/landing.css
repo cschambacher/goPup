@@ -150,7 +150,7 @@
   margin-top: 56px;
   padding: 25px 15px;
   background: #F7F7FA;
-  height: calc(100vh - 299px);
+  height: calc(100vh - 266px);
   display: flex;
   justify-content: space-around;
 }

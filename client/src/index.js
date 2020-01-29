@@ -62,6 +62,7 @@ if (token) {
 }
 
 const Root = () => {
+  console.log(client)
   return (
     <ApolloProvider client={client}>
       <HashRouter>
