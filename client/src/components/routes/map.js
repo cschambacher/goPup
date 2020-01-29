@@ -5,7 +5,6 @@ import "leaflet-routing-machine/dist/leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
-import Routing from "leaflet-routing-machine";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import "bootstrap/dist/css/bootstrap.css";
 import "reactstrap/dist/reactstrap";
@@ -306,14 +305,14 @@ class MapAPI extends React.Component {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {this.state.haveUserLocation ? (
+            {/* {this.state.haveUserLocation ? (
               <Marker position={position} icon={myIcon}>
 
                 <Popup>Route Name</Popup>
               </Marker>
             ) : (
               " "
-            )}
+            )} */}
           </Map>
         </div>
       </div>
