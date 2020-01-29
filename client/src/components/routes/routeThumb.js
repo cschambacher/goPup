@@ -25,10 +25,10 @@ class Thumbnail extends React.Component{
       zoom: 12,
       start: this.props.start,
       end: this.props.end,
+      distance: ""
     }
 
     this.getCoords = this.getCoords.bind(this);
-    // this.displayThatFkgMap = this.displayThatFkgMap.bind(this);
   }
     
     getCoords(str){
@@ -38,12 +38,13 @@ class Thumbnail extends React.Component{
     componentDidMount(){
       
     var map = L.map(`map-${this.props.idx}`).setView([0, 0], 12);
+
       // debugger
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors"
       }).addTo(map);
 
-      L.Routing.control({
+      var control = L.Routing.control({
         waypoints: [
           L.latLng(
             this.getCoords(this.state.start)[0],
@@ -54,12 +55,22 @@ class Thumbnail extends React.Component{
             this.getCoords(this.state.end)[1]
           )
         ],
-      })
-      .addTo(map)
+        // useZoomParameter: false,
+        // fitSelectedRoutes: false,
+        // routeWhileDragging: false
+      }).addTo(map);
+      control.hide();
+      control
+        .on("routesfound", function(e) {
+          var routes = e.routes;
+          var summary = routes[0].summary;
+          var distance = summary.totalDistance
+          console.log(distance)
+        })      
     }
 
     render(){
-      // this.displayThatFkgMap();
+      console.log(this.state.distance)
         return (
           <div id={`map-${this.props.idx}`}>
             <Map
