@@ -181,4 +181,34 @@
 .leaflet-control-container .leaflet-routing-container-hide {
     display: none;
 }
+.route-detail{
+  padding: 20px;
+}
+
+.route-detail h1{
+  padding: 10px;
+}
+.route-detail-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid orange; */
+  padding: 10px;
+}
+
+.map-route-detail{
+  /* width: 50%; */
+  /* border: 1px solid red; */
+}
+.route-detail-left{
+  width: 50%;
+  /* border: 1px solid blue; */
+  margin-right: 10px;
+}
+.route-detail-right{
+  width: 50%;
+  /* border: 1px solid green; */
+  padding: 5px;
+}
 
