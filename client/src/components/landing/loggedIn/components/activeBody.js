@@ -6,7 +6,40 @@ class ActiveBodyCard extends React.Component {
   constructor (props) {
     super(props)
 
+    this.state = {
+      location: {
+        lat: "",
+        lng: ""
+      }
+    }
+
     this.distanceInKmBetweenEarthCoordinates = this.distanceInKmBetweenEarthCoordinates.bind(this)
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        this.setState({
+          location: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
+        });
+      },
+      () => {
+        fetch("https://ipapi.co/json")
+          .then(res => res.json())
+          .then(location => {
+            this.setState({
+              location: {
+                lat: location.latitude,
+                lng: location.longitude
+              }
+            })
+          });
+      },
+
+    );
   }
 
   degreesToRadians(degrees) {

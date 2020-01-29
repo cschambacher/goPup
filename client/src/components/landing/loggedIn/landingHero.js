@@ -11,15 +11,15 @@ class LandingHero extends React.Component{
   render(){
     return(
       <div id="landingHeroContainer">
-        <div id="landingHeroLeftContainer" class="landingHeroBox">
+        <div id="landingHeroLeftContainer" className="landingHeroBox">
           <UserProfileCard />
         </div>
 
-        <div id="landingHeroCenterContainer" class="landingHeroBox">
+        <div id="landingHeroCenterContainer" className="landingHeroBox">
           <ActiveBodyCard />
         </div>
 
-        <div id="landingHeroRightContainer" class="landingHeroSideBox">
+        <div id="landingHeroRightContainer" className="landingHeroSideBox">
           <SideBarCard />
         </div>
       </div>
