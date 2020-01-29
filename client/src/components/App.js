@@ -4,8 +4,10 @@ import AuthRoute from "./util/route_util";
 import SessionMaster from "./session/sessionMaster";
 import LandingMaster from "./landing/landingMaster";
 import MapAPI from "./routes/map";
+import RouteIndex from "./routes/routeIndex";
 import RouteDetail from "./routes/routeDetail";
 import MapIndex from "./routes/mapIndex";
+
 
 
 const App = () => {
