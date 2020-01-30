@@ -23,19 +23,10 @@ class UserProfileCard extends React.Component {
                       {data.user.username}
                     </div>
                     <div className="flex-around">
-<<<<<<< HEAD
                       <div><small>Routes</small></div>
                     </div>
                     <div className="flex-around">
                       <div>{data.user.routes.length}</div>
-=======
-                      <div>following</div>
-                      <div>followers</div>
-                      <div>
-                        routes
-                      <div>{data.user.routes.length}</div>
-                      </div>
->>>>>>> c9a7e2648179fd4bfe38bdd3dafa81defe2547c1
                     </div>
                   </div>
                 )
