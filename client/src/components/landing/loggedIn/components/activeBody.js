@@ -82,7 +82,7 @@ class ActiveBodyCard extends React.Component {
               if (loading) return <div>Loading...</div>;
               if (error) return <div>{error}</div>;
 
-              return data.routes.map(({ _id, title, start, end }) => {
+              return this.shuffle(data.routes.map(({ _id, title, start, end, poop }) => {
                 const startLat = parseFloat(start.split(",")[0]);
                 const startLng = parseFloat(start.split(",")[1]);
                 const endLat = parseFloat(end.split(",")[0]);
@@ -97,9 +97,10 @@ class ActiveBodyCard extends React.Component {
 
                 const result = {
                   distance: distFromEnd,
-                  point: "end", 
+                  point: "end",
                   _id: _id,
-                  title: title
+                  title: title,
+                  poop: poop
                 }
 
                 if (distFromStart < distFromEnd) {
@@ -109,10 +110,10 @@ class ActiveBodyCard extends React.Component {
 
                 return result
 
-                
+
               }).sort((a, b) => {
                 return (a.distance > b.distance) ? 1 : -1
-              }).slice(0, 10).map(result => {
+              }).slice(0, 50)).slice(0,3).map(result => {
                 const doggos = [
                   'https://image.flaticon.com/icons/svg/1820/1820810.svg',
                   'https://image.flaticon.com/icons/svg/1820/1820858.svg',
@@ -147,7 +148,7 @@ class ActiveBodyCard extends React.Component {
                 ]
                 
                 const dogAvatar = this.shuffle(doggos)[0]
-                const poopCount = this.shuffle([1,2,3,4,5,6,7,8,9,10,3,4,7,8,9,12,10,2,5,7,8,9,3,2,10,11,13])[0]
+                const poopCount = result.poop
 
                 return (
                   <Link 

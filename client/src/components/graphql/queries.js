@@ -16,6 +16,7 @@ export const FETCH_ROUTES = gql`
       description
       start
       end
+      poop
     }
   }
 `

@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Query } from "react-apollo";
+import { FETCH_USER } from "../../../graphql/queries"
+// import { VERIFY_USER } from "../../../graphl/mutations"
 
 class UserProfileCard extends React.Component {
   render() {
@@ -9,11 +12,26 @@ class UserProfileCard extends React.Component {
           <i className="fas fa-paw"></i>
         </div>
         <div className="flex-center">
-          username
+          {/* <Mutation mutation={VERIFY_USER}> */}
+            {/* <Query query={FETCH_USER}>
+              {
+                ({ data }) => {
+                  return (
+                    <div>
+                      username
+                    </div>
+                  );
+                }
+              }
+            </Query> */}
+            <div>
+              username
+            </div>
+          {/* </Mutation> */}
         </div>
         <div className="flex-around">
-          <div>following</div>
-          <div>followers</div>
+          {/* <div>following</div>
+          <div>followers</div> */}
           <div>routes</div>
         </div>
         <Link 
