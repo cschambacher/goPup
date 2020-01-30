@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLArray } = graphql;
+const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLInt } = graphql;
 const Route = mongoose.model("route");
 const UserType = require("./user_type");
 const User = mongoose.model("user");
@@ -20,7 +20,8 @@ const RouteType = new GraphQLObjectType({
                     .then(user => user)
                     .catch(err => null);
             } 
-        }
+        },
+        poop: { type: GraphQLInt }
     })
 });
 
