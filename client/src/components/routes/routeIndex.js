@@ -25,7 +25,7 @@ class MapIndex extends React.Component {
       <div>
         <LoggedInLandingNavbar />
         <div className="routeIndex-header">
-          <h2>My Routes</h2>
+          <h2>Routes</h2>
           <button className="routeIndex-create-button">
             <Link to="/routes/new">Create New Route</Link>
           </button>

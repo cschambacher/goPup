@@ -48,6 +48,7 @@ cache.writeData({
   data: {
     isLoggedIn: Boolean(token),
     currUserId: null
+    // currUserId: "5e3229da901abb1d03d1a186"
   }
 });
 
@@ -55,9 +56,12 @@ if (token) {
   client
     .mutate({ mutation: VERIFY_USER, variables: { token } })
     .then(({ data }) => {
+      // console.log("data:", data)
+      // console.log("verifyUserId:", data.verifyUser._id)
       cache.writeData({
-        data: { isLoggedIn: data.verifyUser.loggedIn, currUserId: data.verifyUser.id }
-      });
+        data: { isLoggedIn: data.verifyUser.loggedIn, currUserId: data.verifyUser._id }
+      }, console.log("verifyUserId:", data.verifyUser));
+      
     });
 }
 

@@ -21,7 +21,7 @@ const mutations = new GraphQLObjectType({
         end: { type: GraphQLString }
       },
       async resolve(_, { title, description, start, end }, ctx) {
-        console.log("resolve", ctx);
+        // console.log("resolve", ctx);
         const validUser = await AuthService.verifyUser({ token: ctx.token });
         // console.log("newRoute", validUser);
         if (validUser.loggedIn) {

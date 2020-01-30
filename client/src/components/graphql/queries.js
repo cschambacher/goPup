@@ -4,9 +4,14 @@ import gql from "graphql-tag";
 export const IS_LOGGED_IN = gql`
   query IsUserLoggedIn {
     isLoggedIn @client
-    currUserId 
+    currUserId
   }
 `
+export const CURR_USER_ID = gql`
+  query IsUserLoggedIn {
+    currUserId @client
+  }
+`;
 
 export const FETCH_ROUTES = gql`
   query FetchRoutes {
