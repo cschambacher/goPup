@@ -3,14 +3,10 @@ const validText = require("./valid-text");
 const User = require("../models/User");
 
 module.exports = function validateRegisterInput(data) {
-    console.log("data", data);
     data.username = validText(data.username) ? data.username : "";
     data.accountType = validText(data.accountType) ? data.accountType : "";
     data.email = validText(data.email) ? data.email : "";
     data.password = validText(data.password) ? data.password : "";
-
-    
-    console.log(!["owner", "walker"].includes(data.accountType.toLowerCase()));
 
     if (!["owner", "walker"].includes(data.accountType.toLowerCase())) {
       return { message: "Invalid account type", isValid: false };

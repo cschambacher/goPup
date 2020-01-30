@@ -6,14 +6,14 @@ import { FETCH_USER } from "../../../graphql/queries"
 
 class UserProfileCard extends React.Component {
   render() {
-    // console.log(this.props)
     return (
       <div id="landingHeroUserProfileCard">
         <ApolloConsumer>
           {client => (
             <Query query={FETCH_USER} variables={{ id: this.props.currUserId }}>
               { ({ data }) => {
-              if(!data) return null;
+                
+                if(!data) return null;
                 return (
                   <div>
                     <div id="userCardIcon" className="flex-center">
@@ -23,12 +23,10 @@ class UserProfileCard extends React.Component {
                       {data.user.username}
                     </div>
                     <div className="flex-around">
-                      <div>following</div>
-                      <div>followers</div>
-                      <div>
-                        routes
+                      <div><small>Routes</small></div>
+                    </div>
+                    <div className="flex-around">
                       <div>{data.user.routes.length}</div>
-                      </div>
                     </div>
                   </div>
                 )

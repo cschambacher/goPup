@@ -14,7 +14,6 @@ class RoutingMachine extends MapLayer {
 
   createLeafletElement(props) {
     const { map, from, to } = this.props;
-    console.log(this.props);
     
     var leafletElement = L.Routing.control({
       waypoints: [
@@ -23,8 +22,6 @@ class RoutingMachine extends MapLayer {
       ],
       routeWhileDragging: true,
     })
-    // .on('routeselected', showSpinner)
-    // .on('routesfound routingerror', hideSpinner)
     .addTo(map);
     return leafletElement;
   }

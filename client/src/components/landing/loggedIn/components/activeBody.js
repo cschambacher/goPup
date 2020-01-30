@@ -77,140 +77,143 @@ class ActiveBodyCard extends React.Component {
     const userRoutes = [];
     return (
       <div>
-        <div id="landingHeroActiveBodyCard">
-          <div id="routesNearYouHeader">RECOMMENDED ROUTES</div>
-          <div id="routesNearYouBody">
-            <Query query={FETCH_ROUTES}>
-              {({ loading, error, data }) => {
-                if (loading) return <div>Loading...</div>;
-                if (error) return <div>{error}</div>;
+        <div id="landingHeroCenterContainer" className="landingHeroBox">
+          <div id="landingHeroActiveBodyCard">
+            <div id="routesNearYouHeader">RECOMMENDED ROUTES</div>
+            <div id="routesNearYouBody">
+              <Query query={FETCH_ROUTES}>
+                {({ loading, error, data }) => {
+                  if (loading) return <div>Loading...</div>;
+                  if (error) return <div>{error}</div>;
 
-                const doggos = [
-                  'https://image.flaticon.com/icons/svg/1820/1820810.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820858.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820778.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820885.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820794.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820814.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820845.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820789.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820812.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820785.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820797.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820821.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820791.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820839.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820780.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820783.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820861.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820803.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820899.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820818.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820777.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820873.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820901.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820855.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820903.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820842.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820851.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820825.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820876.svg',
-                  'https://image.flaticon.com/icons/svg/1820/1820870.svg'
-                ]
+                  const doggos = [
+                    'https://image.flaticon.com/icons/svg/1820/1820810.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820858.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820778.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820885.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820794.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820814.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820845.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820789.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820812.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820785.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820797.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820821.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820791.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820839.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820780.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820783.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820861.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820803.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820899.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820818.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820777.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820873.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820901.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820855.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820903.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820842.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820851.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820825.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820876.svg',
+                    'https://image.flaticon.com/icons/svg/1820/1820870.svg'
+                  ]
 
-                data.routes.forEach(route => {
-                  route.doggoPic = this.shuffle(doggos)[0]
-                })
+                  data.routes.forEach(route => {
+                    route.doggoPic = this.shuffle(doggos)[0]
+                  })
 
-                return this.shuffle(data.routes.map(({ _id, title, start, end, poop, doggoPic, user, description }) => {
-                  const startLat = parseFloat(start.split(",")[0]);
-                  const startLng = parseFloat(start.split(",")[1]);
-                  const endLat = parseFloat(end.split(",")[0]);
-                  const endLng = parseFloat(end.split(",")[1]);
+                  return this.shuffle(data.routes.map(({ _id, title, start, end, poop, doggoPic, user, description }) => {
+                    const startLat = parseFloat(start.split(",")[0]);
+                    const startLng = parseFloat(start.split(",")[1]);
+                    const endLat = parseFloat(end.split(",")[0]);
+                    const endLng = parseFloat(end.split(",")[1]);
 
-                  const myLat = this.state.location.lat
-                  const myLng = this.state.location.lng
+                    const myLat = this.state.location.lat
+                    const myLng = this.state.location.lng
 
-                  const distFromStart = this.distanceInKmBetweenEarthCoordinates(startLat, startLng, myLat, myLng)
+                    const distFromStart = this.distanceInKmBetweenEarthCoordinates(startLat, startLng, myLat, myLng)
 
-                  const distFromEnd = this.distanceInKmBetweenEarthCoordinates(endLat, endLng, myLat, myLng)
+                    const distFromEnd = this.distanceInKmBetweenEarthCoordinates(endLat, endLng, myLat, myLng)
 
-                  const result = {
-                    distance: distFromEnd,
-                    point: "end",
-                    _id: _id,
-                    title: title,
-                    poop: poop,
-                    doggoPic: doggoPic,
-                    user: user,
-                    description
-                  }
+                    const result = {
+                      distance: distFromEnd,
+                      point: "end",
+                      _id: _id,
+                      title: title,
+                      poop: poop,
+                      doggoPic: doggoPic,
+                      user: user,
+                      description
+                    }
 
-                  userRoutes.push(result)
+                    userRoutes.push(result)
 
-                  if (distFromStart < distFromEnd) {
-                    result["point"] = "start"
-                    result["distance"] = distFromStart
-                  }
+                    if (distFromStart < distFromEnd) {
+                      result["point"] = "start"
+                      result["distance"] = distFromStart
+                    }
 
-                  return result
+                    return result
 
 
-                }).sort((a, b) => {
-                  return (a.distance > b.distance) ? 1 : -1
-                }).slice(0, 50)).slice(0,3).map(result => {
+                  }).sort((a, b) => {
+                    return (a.distance > b.distance) ? 1 : -1
+                  }).slice(0, 50)).slice(0, 3).map(result => {
 
-                  const dogAvatar = result.doggoPic
-                  const poopCount = result.poop
+                    const dogAvatar = result.doggoPic
+                    const poopCount = result.poop
 
-                  return (
-                    <Link 
-                      key={result._id} 
-                      style={{ "textDecoration": "none" }}
-                      className="routeRecommendationCard" 
-                      to={`/routes/${result._id}`}
-                    >
-                      <div className="flex-center">
-                        <img className="doggoAvatar" src={dogAvatar} alt="Cute doggo icon!" />
-                      </div>
-
-                      <div className="flex-center doggoRouteTitle">
-                        {result.title.length > 12 ? result.title.slice(0, 12) + "..." : result.title}
-                      </div>
-
-                      <div className="flex-center">
-                        <div className="doggoRoutePoopIcon">
-                          <i className="fas fa-poop smolIcon"></i>
+                    return (
+                      <Link
+                        key={result._id}
+                        style={{ "textDecoration": "none" }}
+                        className="routeRecommendationCard"
+                        to={`/routes/${result._id}`}
+                      >
+                        <div className="flex-center">
+                          <img className="doggoAvatar" src={dogAvatar} alt="Cute doggo icon!" />
                         </div>
-                        <div>
-                          {poopCount} püps
-                        </div>
-                        <div className="doggoRoutePoopIcon">
-                          <i className="fas fa-poop"></i>
-                        </div>
-                      </div>
-                      
-                      <div className="doggoRouteFooter flex-center">
-                        <small>
-                          {result.distance < 20 ? "Only " : ""}
-                          {result.distance > 50 && result.distance < 100 ? "Darn, " : ""}
-                          {result.distance >= 100 ? "Yikes, " : ""}
-                          {result.distance} km away!
-                        </small>
-                      </div>
-                    </Link>
-                  );
-                })
-              }}
-            </Query>
-          </div >
 
-          <div id="landingHeroCenterContainer2" className="landingHeroBox2">
-            <div id="landingHeroActiveBodyCard">
-              <div id="routesNearYouHeader">MY ROUTES</div>
-              <UserRouteIndex currUserId={this.props.currUserId} routes={userRoutes}/>
+                        <div className="flex-center doggoRouteTitle">
+                          {result.title.length > 12 ? result.title.slice(0, 12) + "..." : result.title}
+                        </div>
+
+                        <div className="flex-center">
+                          <div className="doggoRoutePoopIcon">
+                            <i className="fas fa-poop smolIcon"></i>
+                          </div>
+                          <div>
+                            {poopCount} püps
+                      </div>
+                          <div className="doggoRoutePoopIcon">
+                            <i className="fas fa-poop"></i>
+                          </div>
+                        </div>
+
+                        <div className="doggoRouteFooter flex-center">
+                          <small>
+                            {result.distance < 20 ? "Only " : ""}
+                            {result.distance > 50 && result.distance < 100 ? "Darn, " : ""}
+                            {result.distance >= 100 ? "Yikes, " : ""}
+                            {result.distance} km away!
+                      </small>
+                        </div>
+                      </Link>
+                    );
+                  })
+                }}
+              </Query>
             </div>
           </div>
+        </div>
+        <div id="landingHeroCenterContainer2" className="landingHeroBox2">
+          {/* <div id="landingHeroCenterContainer2" className="landingHeroBox2"> */}
+            <div id="landingHeroActiveBodyCard">
+              <div id="routesNearYouHeader">MY ROUTES</div>
+              <UserRouteIndex currUserId={this.props.currUserId} routes={userRoutes} />
+            </div>
+          {/* </div> */}
         </div>
       </div>
     );

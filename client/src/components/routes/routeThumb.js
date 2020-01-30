@@ -59,12 +59,8 @@ class Thumbnail extends React.Component{
         .on("routesfound", function(e) {
           var routes = e.routes;
           var summary = routes[0].summary;
-          // console.log("summary:", summary)
           var distance = (summary.totalDistance/1000).toFixed(2)
-          // console.log(typeof distance === "string")
-          // alert("distance:" + distance + " km")
           this.setState({ distance: distance }, 
-            // () => console.log("state-dist", this.state.distance)
             )
         }.bind(this))
     }

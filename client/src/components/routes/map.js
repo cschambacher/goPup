@@ -88,8 +88,6 @@ class MapAPI extends React.Component {
         "routeselected",
         function(e) {
           var route = e.route;
-          // console.log(route);
-          // routeArray = routeControl.getWaypoints();
 
           var start = Object.values(route.inputWaypoints[0].latLng).toString();
           var end = Object.values(route.inputWaypoints[1].latLng).toString();
@@ -99,10 +97,6 @@ class MapAPI extends React.Component {
         }.bind(this)
       )
       .addTo(map);
-    // .addTo(map);
-    // L.Control.geocoder().addTo(map);
-    // console.log(routeArray[0].latLng);
-    // console.log(routeArray[1].latLng);
   }
 
   componentDidMount() {
@@ -117,14 +111,11 @@ class MapAPI extends React.Component {
           haveUserLocation: true,
           zoom: 13
         },this.leafletElement);
-        // console.log(position);
       },
       () => {
-        // console.log("User did not give location");
         fetch("https://ipapi.co/json")
           .then(res => res.json())
           .then(location => {
-            // console.log(location);
             this.setState({
               location: {
                 lat: location.latitude,

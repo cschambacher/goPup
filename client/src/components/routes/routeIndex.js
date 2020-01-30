@@ -35,7 +35,6 @@ class MapIndex extends React.Component {
             {({ loading, error, data }) => {
               if (loading) return <h1>Loading...</h1>;
               if (error) return <h1>{error}</h1>;
-              // console.log(data.routes)
               return data.routes.map(({ _id, title, start, end, description }) => (
                 <li className="map-card-li" key={_id}>
                   <Thumbnail 
