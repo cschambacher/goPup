@@ -5,10 +5,6 @@ import { FETCH_USER } from "../../../graphql/queries"
 // import { VERIFY_USER } from "../../../graphl/mutations"
 
 class UserProfileCard extends React.Component {
-  constructor(props){
-    super(props)
-  }
-
   render() {
     console.log(this.props)
     return (

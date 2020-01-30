@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { Query, ApolloConsumer } from "react-apollo";
 import { IS_LOGGED_IN } from "../graphql/queries";
 
