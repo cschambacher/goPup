@@ -1,6 +1,6 @@
 const graphql = require("graphql");
 const mongoose = require("mongoose");
-const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLFloat, GraphQLArray } = graphql;
+const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLInt, GraphQLArray } = graphql;
 
 const UserType = require("./types/user_type");
 const User = require("../models/User");
@@ -21,7 +21,7 @@ const mutations = new GraphQLObjectType({
         end: { type: GraphQLString }
       },
       async resolve(_, { title, description, start, end }, ctx) {
-        // console.log("resolve", ctx);
+        console.log("resolve", ctx);
         const validUser = await AuthService.verifyUser({ token: ctx.token });
         // console.log("newRoute", validUser);
         if (validUser.loggedIn) {
@@ -46,6 +46,17 @@ const mutations = new GraphQLObjectType({
       args: { _id: { type: GraphQLID } },
       resolve(_, { _id }) {
         return Route.remove({ _id });
+      }
+    },
+    updateRoutePoop: {
+      type: RouteType,
+      args: {
+        _id: { type: GraphQLID },
+        poop: { type: GraphQLInt }
+      },
+      resolve(_, { _id, poop }) {
+        // console.log("mutation", parentValue, routeId)
+        return Route.updatePoop(_id, poop);
       }
     },
     register: {
