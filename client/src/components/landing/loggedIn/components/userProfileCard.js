@@ -17,7 +17,6 @@ class UserProfileCard extends React.Component {
           {client => (
             <Query query={FETCH_USER} variables={{ id: this.props.currUserId }}>
               { ({ data }) => {
-              console.log("Data:", data)
               if(!data) return null;
                 return (
                   <div>
