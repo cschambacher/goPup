@@ -27,9 +27,9 @@ app.use(
   "/graphql",
   expressGraphQL((request) => {
     return {
-    schema,
-    context: {token: request.headers.authorization},
-    graphiql: true
+      schema,
+      context: {token: request.headers.authorization},
+      graphiql: true
     }
   })
 );
