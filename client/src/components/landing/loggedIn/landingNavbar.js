@@ -9,8 +9,8 @@ const LandingNavbar = props => {
     <div className="LandingNavMainCont">
       <div className="LandingNavCont">
         <ApolloConsumer>
-          {client => (
-            <Query query={IS_LOGGED_IN}>
+          {client => {
+            return <Query query={IS_LOGGED_IN}>
               {({ data }) => {
                 if (data.isLoggedIn) {
                   return (
@@ -71,8 +71,8 @@ const LandingNavbar = props => {
                             className="landingBarDrop"
                           >
                             <div id="userDropMask"></div>
-                            <div className="dropItem">Profile</div>
-                            <div className="dropItem">Settings</div>
+                            {/* <div className="dropItem">Profile</div>
+                            <div className="dropItem">Settings</div> */}
                             <div
                               className="dropItem"
                               id="sessionLogoutButton"
@@ -112,7 +112,7 @@ const LandingNavbar = props => {
                 }
               }}
             </Query>
-          )}
+          }}
         </ApolloConsumer>
       </div>
     </div>

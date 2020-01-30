@@ -1,12 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Query, Mutation, ApolloConsumer } from "react-apollo";
-import {
-  FETCH_USER,
-  IS_LOGGED_IN,
-  CURR_USER_ID
-} from "../../../graphql/queries";
-import { VERIFY_USER } from "../../../graphql/mutations";
+import { Query, ApolloConsumer } from "react-apollo";
+import { FETCH_USER } from "../../../graphql/queries"
+// import { VERIFY_USER } from "../../../graphl/mutations"
 
 class UserProfileCard extends React.Component {
   constructor(props){
