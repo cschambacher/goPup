@@ -127,7 +127,7 @@ class StatsBody extends React.Component  {
           }
         } else if (operator === ">") {
           if (poops.poop > route.poop) {
-            poops = route.poop
+            poops = route
           }
         }
       }
@@ -185,6 +185,7 @@ class StatsBody extends React.Component  {
             const closestRoute = this.routeDistance(data.routes, ">")
             const mostPoop = this.poopCount(data.routes, "<")
             const leastPoop = this.poopCount(data.routes, ">")
+            console.log(data)
             return (
               <div id="statsContainer" className="flex-around">
                 <div className="landingStatsBox">
