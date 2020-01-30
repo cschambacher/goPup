@@ -12,13 +12,13 @@
   padding: 0;
 }
 
-.map-cont {
-  height: 80vh;
+.mapId {
+  height: 70vh;
 }
 
 .map {
   /* height: 350px; */
-  height: 80vh;
+  height: 70vh;
 }
 
 .map-nav {
@@ -28,7 +28,8 @@
   text-align: left;
   color: #6E6E6E;
   margin-top: 56px;
-
+  min-height: 56px;
+  max-height: 56px;
 }
 
 .map-search-cont {
@@ -208,6 +209,11 @@
 
 .map-thumb-footer h6 {
   padding: 5px;
+}
+
+.map-thumb-footer a {
+  color: #007FB6;
+  font-weight: 700;
 }
 
 .map-thumb-footer-dist-cont {
