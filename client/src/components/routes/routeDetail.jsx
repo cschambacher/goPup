@@ -3,6 +3,9 @@ import { FETCH_ROUTE } from '../graphql/queries';
 import { withRouter } from "react-router-dom";
 import { Query } from 'react-apollo';
 import Thumbnail from "./routeThumb";
+import LoggedInLandingNavbar from "../landing/loggedIn/landingNavbar";
+import LoggedInLandingFooter from "../landing/loggedIn/landingFooter";
+
 
 const RouteDetail = props => {
     return (
@@ -13,6 +16,7 @@ const RouteDetail = props => {
                 console.log(data.route);
                 return (
                     <div className="route-detail">
+                        <LoggedInLandingNavbar/>
                         <p></p>
                         <h1>{data.route.title}</h1>
                         <div className="route-detail-container">
@@ -30,7 +34,8 @@ const RouteDetail = props => {
                                 </div>
                                 <p>{data.route.description}</p>
                             </div> 
-                        </div>               
+                        </div>
+                        <LoggedInLandingFooter/>               
                     </div>
                 );
             }}
