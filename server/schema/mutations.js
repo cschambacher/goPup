@@ -23,7 +23,7 @@ const mutations = new GraphQLObjectType({
       async resolve(_, { title, description, start, end }, ctx) {
         const validUser = await AuthService.verifyUser({ token: ctx.token });
         if (validUser.loggedIn) {
-          const currUserId = validUser.id;
+          const currUserId = validUser._id;
           return new Route({ title, description, start, end, user: currUserId }).save()
             .then(route => User.findById(currUserId)
             .then(user => {

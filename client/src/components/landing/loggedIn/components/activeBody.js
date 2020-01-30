@@ -208,12 +208,10 @@ class ActiveBodyCard extends React.Component {
           </div>
         </div>
         <div id="landingHeroCenterContainer2" className="landingHeroBox2">
-          {/* <div id="landingHeroCenterContainer2" className="landingHeroBox2"> */}
-            <div id="landingHeroActiveBodyCard">
-              <div id="routesNearYouHeader">MY ROUTES</div>
-              <UserRouteIndex currUserId={this.props.currUserId} routes={userRoutes} />
-            </div>
-          {/* </div> */}
+          <div id="landingHeroActiveBodyCard">
+            <div id="routesNearYouHeader">MY ROUTES</div>
+            <UserRouteIndex currUserId={this.props.currUserId} routes={userRoutes} />
+          </div>
         </div>
       </div>
     );
