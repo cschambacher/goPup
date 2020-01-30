@@ -21,7 +21,6 @@ const LandingMaster = () => {
           <Query query={IS_LOGGED_IN}>
             {({ data }) => {
               if (data.isLoggedIn) {
-                console.log("LandingMaster:", data)
                 return (
                   <div id="landingMasterContainer">
                     <LoggedInLandingNavbar />

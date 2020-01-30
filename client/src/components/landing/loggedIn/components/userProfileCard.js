@@ -6,7 +6,6 @@ import { FETCH_USER } from "../../../graphql/queries"
 
 class UserProfileCard extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <div id="landingHeroUserProfileCard">
         <ApolloConsumer>
@@ -15,7 +14,6 @@ class UserProfileCard extends React.Component {
               { ({ data }) => {
                 
                 if(!data) return null;
-                console.log(data)
                 return (
                   <div>
                     <div id="userCardIcon" className="flex-center">

@@ -21,12 +21,9 @@ const mutations = new GraphQLObjectType({
         end: { type: GraphQLString }
       },
       async resolve(_, { title, description, start, end }, ctx) {
-        // console.log("resolve", ctx);
         const validUser = await AuthService.verifyUser({ token: ctx.token });
-        // console.log("newRoute", validUser);
         if (validUser.loggedIn) {
           const currUserId = validUser.id;
-          // console.log("resolve", validUser);
           return new Route({ title, description, start, end, user: currUserId }).save()
             .then(route => User.findById(currUserId)
             .then(user => {
@@ -55,7 +52,6 @@ const mutations = new GraphQLObjectType({
         poop: { type: GraphQLInt }
       },
       resolve(_, { _id, poop }) {
-        // console.log("mutation", parentValue, routeId)
         return Route.updatePoop(_id, poop);
       }
     },

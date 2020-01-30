@@ -31,9 +31,7 @@ const RouteSchema = new Schema({
 });
 RouteSchema.statics.updatePoop = (routeId, poop) => {
   const Route = mongoose.model("route");
-  console.log("updatePoop", routeId)
   return Route.findById(routeId).then(route => {
-    console.log("updatePoop", route)
     route.poop = poop
     return route.save();
   });

@@ -16,7 +16,6 @@ const UserType = new GraphQLObjectType({
     routes: { 
       type: new GraphQLList(require("./route_type")),
       resolve(parentValue) {
-        // console.log("parentValue", parentValue, parentValue._id)
         return User.findById(parentValue._id)
           .populate("routes")
           .then(user => user.routes);
