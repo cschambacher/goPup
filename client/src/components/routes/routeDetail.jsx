@@ -15,46 +15,50 @@ const RouteDetail = props => {
                 if (loading) return <p>Loading...</p>;
                 if (error) return <p>Error</p>;
                 return (
-                    <div className="route-detail">
-                        <LoggedInLandingNavbar/>
-                        <p></p>
-                        <h1>{data.route.title}</h1>
-                        <div className="route-detail-container">
-                            <div className="route-detail-left">
-                                <div className="map-route-detail" key={data.route._id}>
-                                    <Thumbnail idx={`${data.route._id}`} start={data.route.start} end={data.route.end} />
+                    <div>
+                        <LoggedInLandingNavbar />
+                        <div className="route-detail">
+                        
+                            <p></p>
+                            <h1>{data.route.title}</h1>
+                            <div className="route-detail-container">
+                                <div className="route-detail-left">
+                                    <div className="map-route-detail" key={data.route._id}>
+                                        <Thumbnail idx={`${data.route._id}`} start={data.route.start} end={data.route.end} />
+                                    </div>
                                 </div>
+                                <div className="route-detail-right">
+                                    <h3>
+                                        Route created by {data.route.user.username}
+                                    </h3>
+                                    <div className="stats">
+                                        püps: {data.route.poop}
+                                        <Mutation mutation={UPDATE_ROUTE_POOP}>
+                                            {(updateRoutePoop, mutationData) => (
+                                            <div 
+                                                className="poopPlusPlus"
+                                                onClick={(e) => {
+                                                e.preventDefault()
+                                                updateRoutePoop({
+                                                    variables: {
+                                                        id: data.route._id, 
+                                                        poop: data.route.poop + 1
+                                                    }
+                                                })
+                                                }}
+                                            >
+                                                Add püp!
+                                            </div>
+                                            )}
+                                        </Mutation>
+                                    </div>
+                                    
+                                    <p>{data.route.description}</p>
+                                </div> 
                             </div>
-                            <div className="route-detail-right">
-                                <h3>
-                                    Route created by {data.route.user.username}
-                                </h3>
-                                <div className="stats">
-                                    püps: {data.route.poop}
-                                    <Mutation mutation={UPDATE_ROUTE_POOP}>
-                                        {(updateRoutePoop, mutationData) => (
-                                          <div 
-                                            className="poopPlusPlus"
-                                            onClick={(e) => {
-                                              e.preventDefault()
-                                              updateRoutePoop({
-                                                variables: {
-                                                    id: data.route._id, 
-                                                    poop: data.route.poop + 1
-                                                }
-                                              })
-                                            }}
-                                          >
-                                              Add püp!
-                                          </div>
-                                        )}
-                                    </Mutation>
-                                </div>
-                                
-                                <p>{data.route.description}</p>
-                            </div> 
+                                        
                         </div>
-                        <LoggedInLandingFooter/>               
+                        <LoggedInLandingFooter /> 
                     </div>
                 );
             }}
