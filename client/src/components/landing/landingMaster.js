@@ -25,7 +25,6 @@ const LandingMaster = () => {
                   <div id="landingMasterContainer">
                     <LoggedInLandingNavbar />
                     <LoggedInLandingHero currUserId={data.currUserId}/>
-                    {/* <Route path="/" component={LoggedInLandingHero} /> */}
                     <LoggedInLandingFooter />
                   </div>
                 );

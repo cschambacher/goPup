@@ -1,8 +1,22 @@
+.group::after {
+  content: "========================";
+  display: block;
+  clear: both;
+}
+
 .landingHeroBox {
   padding: 15px 15px;
   width: 250px;
   border-radius: 5px; 
   background: white;
+  box-shadow: 2px 2px 20px rgba(8, 74, 28, 0.05);
+}
+.landingHeroBox2 {
+  padding: 15px 15px;
+  width: 250px;
+  border-radius: 5px; 
+  background: white;
+  margin-left: -15px;
   box-shadow: 2px 2px 20px rgba(8, 74, 28, 0.05);
 }
 
@@ -102,7 +116,7 @@
 }
 
 #landingHeroLeftContainer {
-  height: 165px;
+  height: 175px;
 }
 
 #landingHeroCenterContainer {
@@ -110,6 +124,11 @@
   height: 270px;
   /* min-height: 270px; */
   /* overflow-y: scroll; */
+}
+#landingHeroCenterContainer2 {
+  width: 600px;
+  height: 270px;
+  margin-top: 25px;;
 }
 
 @media only screen and (max-height: 650px) {
