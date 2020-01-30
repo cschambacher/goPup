@@ -1,7 +1,8 @@
 import React from 'react';
 import { FETCH_ROUTE } from '../graphql/queries';
+import { UPDATE_ROUTE_POOP } from '../graphql/mutations'
 import { withRouter } from "react-router-dom";
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import Thumbnail from "./routeThumb";
 import LoggedInLandingNavbar from "../landing/loggedIn/landingNavbar";
 import LoggedInLandingFooter from "../landing/loggedIn/landingFooter";
@@ -13,7 +14,6 @@ const RouteDetail = props => {
             {({ loading, error, data }) => {
                 if (loading) return <p>Loading...</p>;
                 if (error) return <p>Error</p>;
-                console.log(data.route);
                 return (
                     <div className="route-detail">
                         <LoggedInLandingNavbar/>
@@ -26,13 +26,31 @@ const RouteDetail = props => {
                                 </div>
                             </div>
                             <div className="route-detail-right">
-                                <h2>author</h2>
-                                <div className="green">
-                                    {data.route.poop} püps
+                                <h3>
+                                    Route created by {data.route.user.username}
+                                </h3>
+                                <div className="stats">
+                                    püps: {data.route.poop}
+                                    <Mutation mutation={UPDATE_ROUTE_POOP}>
+                                        {(updateRoutePoop, mutationData) => (
+                                          <div 
+                                            className="poopPlusPlus"
+                                            onClick={(e) => {
+                                              e.preventDefault()
+                                              updateRoutePoop({
+                                                variables: {
+                                                    id: data.route._id, 
+                                                    poop: data.route.poop + 1
+                                                }
+                                              })
+                                            }}
+                                          >
+                                              Add püp!
+                                          </div>
+                                        )}
+                                    </Mutation>
                                 </div>
-                                <div className="doggoRoutePoopIcon green">
-                                    <i className="fas fa-poop"></i>
-                                </div>
+                                
                                 <p>{data.route.description}</p>
                             </div> 
                         </div>

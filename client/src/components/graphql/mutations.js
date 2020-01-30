@@ -47,7 +47,7 @@ export const DELETE_ROUTE = gql`
   }
 `
 export const UPDATE_ROUTE_POOP = gql`
-  mutation UpdateRoutePoop($id: ID!, $poop: Number!) {
+  mutation UpdateRoutePoop($id: ID!, $poop: Int!) {
     updateRoutePoop(_id: $id, poop: $poop) {
       _id
       title

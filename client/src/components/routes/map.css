@@ -103,6 +103,20 @@
   overflow: none;
 }
 
+.poopPlusPlus {
+  border: 1px solid black;
+  padding: 0px 10px;
+  margin: 0px 15px;
+}
+
+.poopPlusPlus:hover {
+  cursor: pointer;
+}
+
+.stats {
+  display: flex;
+}
+
 .modal-form {
   display: flex;
   flex-wrap: wrap;
