@@ -25,7 +25,7 @@ const RouteDetail = props => {
                                 <h2>author</h2>
                                 <div className="stats">
                                     distance: 
-                                    nr. of average poops:
+                                    nr. of average poops: {data.route.poop}
                                 </div>
                                 <p>{data.route.description}</p>
                             </div> 

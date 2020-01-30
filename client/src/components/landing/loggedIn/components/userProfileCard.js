@@ -13,10 +13,9 @@ class UserProfileCard extends React.Component {
         </div>
         <div className="flex-center">
           {/* <Mutation mutation={VERIFY_USER}> */}
-            <Query query={FETCH_USER}>
+            {/* <Query query={FETCH_USER}>
               {
                 ({ data }) => {
-                  console.log(data)
                   return (
                     <div>
                       username
@@ -24,12 +23,15 @@ class UserProfileCard extends React.Component {
                   );
                 }
               }
-            </Query>
+            </Query> */}
+            <div>
+              username
+            </div>
           {/* </Mutation> */}
         </div>
         <div className="flex-around">
-          <div>following</div>
-          <div>followers</div>
+          {/* <div>following</div>
+          <div>followers</div> */}
           <div>routes</div>
         </div>
         <Link 

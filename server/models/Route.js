@@ -25,7 +25,7 @@ const RouteSchema = new Schema({
   },
   poop: {
     type: Number,
-    default: 0
+    default: 37
   }
   
 });

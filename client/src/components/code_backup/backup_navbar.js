@@ -6,10 +6,11 @@ import { IS_LOGGED_IN } from "../graphql/queries";
 const Nav = props => {
   return (
     <ApolloConsumer>
-      {client => (
-          <Query query={IS_LOGGED_IN}>
+      {client => {
+          return <Query query={IS_LOGGED_IN}>
             {({ data }) => {
               if (data.isLoggedIn) {
+                
                 return (
                   <button
                     onClick={e => {
@@ -32,7 +33,7 @@ const Nav = props => {
               }
             }}
           </Query>
-        )}
+        }}
     </ApolloConsumer>
   );
 };

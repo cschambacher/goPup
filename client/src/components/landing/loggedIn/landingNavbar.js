@@ -9,11 +9,10 @@ const LandingNavbar = props => {
     <div className="LandingNavMainCont">
       <div className="LandingNavCont">
         <ApolloConsumer>
-          {client => (
-            <Query query={IS_LOGGED_IN}>
+          {client => {
+            return <Query query={IS_LOGGED_IN}>
               {({ data }) => {
                 if (data.isLoggedIn) {
-                  console.log(data)
                   return (
                     <div id="landingNavbarContainer">
                       <div id="landingNavbarLeftContainer">
@@ -109,7 +108,7 @@ const LandingNavbar = props => {
                 }
               }}
             </Query>
-          )}
+          }}
         </ApolloConsumer>
       </div>
     </div>
