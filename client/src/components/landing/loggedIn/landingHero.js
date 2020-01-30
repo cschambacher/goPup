@@ -19,10 +19,8 @@ class LandingHero extends React.Component{
           <UserProfileCard currUserId={this.props.currUserId}/>
         </div>
 
-        <div id="landingHeroCenterContainer" className="landingHeroBox">
-          <ActiveBodyCard currUserId={this.props.currUserId}/>
-        </div>
-        
+        <ActiveBodyCard currUserId={this.props.currUserId}/>
+
         <div id="landingHeroRightContainer" className="landingHeroSideBox">
           <SideBarCard />
         </div>
