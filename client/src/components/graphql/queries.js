@@ -22,6 +22,9 @@ export const FETCH_ROUTES = gql`
       start
       end
       poop
+      user {
+        _id
+      }
     }
   }
 `

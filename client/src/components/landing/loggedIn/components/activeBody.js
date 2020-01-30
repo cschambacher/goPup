@@ -2,6 +2,7 @@ import React from "react";
 import { FETCH_ROUTES } from "../../../graphql/queries";
 import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
+import UserRouteIndex from "../../../routes/userRouteIndex";
 
 class ActiveBodyCard extends React.Component {
   constructor (props) {
@@ -10,8 +11,8 @@ class ActiveBodyCard extends React.Component {
     this.state = {
       location: {
         lat: "",
-        lng: ""
-      }
+        lng: "",
+      }    
     }
 
     this.distanceInKmBetweenEarthCoordinates = this.distanceInKmBetweenEarthCoordinates.bind(this)
@@ -73,47 +74,17 @@ class ActiveBodyCard extends React.Component {
   }
 
   render() {
+    const userRoutes = [];
     return (
-      <div id="landingHeroActiveBodyCard">
-        <div id="routesNearYouHeader">RECOMMENDED ROUTES</div>
-        <div id="routesNearYouBody">
-          <Query query={FETCH_ROUTES}>
-            {({ loading, error, data }) => {
-              if (loading) return <div>Loading...</div>;
-              if (error) return <div>{error}</div>;
+      <div>
+        <div id="landingHeroActiveBodyCard">
+          <div id="routesNearYouHeader">RECOMMENDED ROUTES</div>
+          <div id="routesNearYouBody">
+            <Query query={FETCH_ROUTES}>
+              {({ loading, error, data }) => {
+                if (loading) return <div>Loading...</div>;
+                if (error) return <div>{error}</div>;
 
-              return this.shuffle(data.routes.map(({ _id, title, start, end, poop }) => {
-                const startLat = parseFloat(start.split(",")[0]);
-                const startLng = parseFloat(start.split(",")[1]);
-                const endLat = parseFloat(end.split(",")[0]);
-                const endLng = parseFloat(end.split(",")[1]);
-
-                const myLat = this.state.location.lat
-                const myLng = this.state.location.lng
-
-                const distFromStart = this.distanceInKmBetweenEarthCoordinates(startLat, startLng, myLat, myLng)
-
-                const distFromEnd = this.distanceInKmBetweenEarthCoordinates(endLat, endLng, myLat, myLng)
-
-                const result = {
-                  distance: distFromEnd,
-                  point: "end",
-                  _id: _id,
-                  title: title,
-                  poop: poop
-                }
-
-                if (distFromStart < distFromEnd) {
-                  result["point"] = "start"
-                  result["distance"] = distFromStart
-                }
-
-                return result
-
-
-              }).sort((a, b) => {
-                return (a.distance > b.distance) ? 1 : -1
-              }).slice(0, 50)).slice(0,3).map(result => {
                 const doggos = [
                   'https://image.flaticon.com/icons/svg/1820/1820810.svg',
                   'https://image.flaticon.com/icons/svg/1820/1820858.svg',
@@ -146,50 +117,100 @@ class ActiveBodyCard extends React.Component {
                   'https://image.flaticon.com/icons/svg/1820/1820876.svg',
                   'https://image.flaticon.com/icons/svg/1820/1820870.svg'
                 ]
-                
-                const dogAvatar = this.shuffle(doggos)[0]
-                const poopCount = result.poop
 
-                return (
-                  <Link 
-                    key={result._id} 
-                    style={{ "textDecoration": "none" }}
-                    className="routeRecommendationCard" 
-                    to={`/routes/${result._id}`}
-                  >
-                    <div className="flex-center">
-                      <img className="doggoAvatar" src={dogAvatar} alt="Cute doggo icon!" />
-                    </div>
+                data.routes.forEach(route => {
+                  route.doggoPic = this.shuffle(doggos)[0]
+                })
 
-                    <div className="flex-center doggoRouteTitle">
-                      {result.title.length > 12 ? result.title.slice(0, 12) + "..." : result.title}
-                    </div>
+                return this.shuffle(data.routes.map(({ _id, title, start, end, poop, doggoPic, user, description }) => {
+                  const startLat = parseFloat(start.split(",")[0]);
+                  const startLng = parseFloat(start.split(",")[1]);
+                  const endLat = parseFloat(end.split(",")[0]);
+                  const endLng = parseFloat(end.split(",")[1]);
 
-                    <div className="flex-center">
-                      <div className="doggoRoutePoopIcon">
-                        <i className="fas fa-poop smolIcon"></i>
+                  const myLat = this.state.location.lat
+                  const myLng = this.state.location.lng
+
+                  const distFromStart = this.distanceInKmBetweenEarthCoordinates(startLat, startLng, myLat, myLng)
+
+                  const distFromEnd = this.distanceInKmBetweenEarthCoordinates(endLat, endLng, myLat, myLng)
+
+                  const result = {
+                    distance: distFromEnd,
+                    point: "end",
+                    _id: _id,
+                    title: title,
+                    poop: poop,
+                    doggoPic: doggoPic,
+                    user: user,
+                    description
+                  }
+
+                  userRoutes.push(result)
+
+                  if (distFromStart < distFromEnd) {
+                    result["point"] = "start"
+                    result["distance"] = distFromStart
+                  }
+
+                  return result
+
+
+                }).sort((a, b) => {
+                  return (a.distance > b.distance) ? 1 : -1
+                }).slice(0, 50)).slice(0,3).map(result => {
+
+                  const dogAvatar = result.doggoPic
+                  const poopCount = result.poop
+
+                  return (
+                    <Link 
+                      key={result._id} 
+                      style={{ "textDecoration": "none" }}
+                      className="routeRecommendationCard" 
+                      to={`/routes/${result._id}`}
+                    >
+                      <div className="flex-center">
+                        <img className="doggoAvatar" src={dogAvatar} alt="Cute doggo icon!" />
                       </div>
-                      <div>
-                        {poopCount} püps
+
+                      <div className="flex-center doggoRouteTitle">
+                        {result.title.length > 12 ? result.title.slice(0, 12) + "..." : result.title}
                       </div>
-                      <div className="doggoRoutePoopIcon">
-                        <i className="fas fa-poop"></i>
+
+                      <div className="flex-center">
+                        <div className="doggoRoutePoopIcon">
+                          <i className="fas fa-poop smolIcon"></i>
+                        </div>
+                        <div>
+                          {poopCount} püps
+                        </div>
+                        <div className="doggoRoutePoopIcon">
+                          <i className="fas fa-poop"></i>
+                        </div>
                       </div>
-                    </div>
-                    
-                    <div className="doggoRouteFooter flex-center">
-                      <small>
-                        {result.distance < 20 ? "Only " : ""}
-                        {result.distance > 50 && result.distance < 100 ? "Darn, " : ""}
-                        {result.distance >= 100 ? "Yikes, " : ""}
-                        {result.distance} km away!
-                      </small>
-                    </div>
-                  </Link>
-                );
-              })
-            }}
-          </Query>
+                      
+                      <div className="doggoRouteFooter flex-center">
+                        <small>
+                          {result.distance < 20 ? "Only " : ""}
+                          {result.distance > 50 && result.distance < 100 ? "Darn, " : ""}
+                          {result.distance >= 100 ? "Yikes, " : ""}
+                          {result.distance} km away!
+                        </small>
+                      </div>
+                    </Link>
+                  );
+                })
+              }}
+            </Query>
+          </div >
+
+          <div id="landingHeroCenterContainer2" className="landingHeroBox2">
+            <div id="landingHeroActiveBodyCard">
+              <div id="routesNearYouHeader">MY ROUTES</div>
+              <UserRouteIndex currUserId={this.props.currUserId} routes={userRoutes}/>
+            </div>
+          </div>
         </div>
       </div>
     );
