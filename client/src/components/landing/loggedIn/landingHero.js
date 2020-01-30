@@ -10,7 +10,7 @@ import UserProfileCard from "./components/userProfileCard"
 
 class LandingHero extends React.Component{
 
-  
+
   render(){
     return(
       <div id="landingHeroContainer">
@@ -20,9 +20,9 @@ class LandingHero extends React.Component{
         </div>
 
         <div id="landingHeroCenterContainer" className="landingHeroBox">
-          <ActiveBodyCard />
+          <ActiveBodyCard currUserId={this.props.currUserId}/>
         </div>
-
+        
         <div id="landingHeroRightContainer" className="landingHeroSideBox">
           <SideBarCard />
         </div>

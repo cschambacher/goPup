@@ -10,14 +10,14 @@ class UserProfileCard extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div id="landingHeroUserProfileCard">
         <ApolloConsumer>
           {client => (
             <Query query={FETCH_USER} variables={{ id: this.props.currUserId }}>
               { ({ data }) => {
-              console.log("Data:", data)
+              // console.log("Data:", data)
               if(!data) return null;
                 return (
                   <div>
@@ -30,7 +30,10 @@ class UserProfileCard extends React.Component {
                     <div className="flex-around">
                       <div>following</div>
                       <div>followers</div>
-                      <div>routes</div>
+                      <div>
+                        routes
+                      <div>{data.user.routes.length}</div>
+                      </div>
                     </div>
                   </div>
                 )

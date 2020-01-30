@@ -60,7 +60,7 @@ if (token) {
       // console.log("verifyUserId:", data.verifyUser._id)
       cache.writeData({
         data: { isLoggedIn: data.verifyUser.loggedIn, currUserId: data.verifyUser._id }
-      }, console.log("verifyUserId:", data.verifyUser));
+      })
       
     });
 }
