@@ -13,7 +13,9 @@ class UserProfileCard extends React.Component {
           {client => (
             <Query query={FETCH_USER} variables={{ id: this.props.currUserId }}>
               { ({ data }) => {
-              if(!data) return null;
+                
+                if(!data) return null;
+                console.log(data)
                 return (
                   <div>
                     <div id="userCardIcon" className="flex-center">
@@ -23,9 +25,10 @@ class UserProfileCard extends React.Component {
                       {data.user.username}
                     </div>
                     <div className="flex-around">
-                      <div>following</div>
-                      <div>followers</div>
-                      <div>routes</div>
+                      <div><small>Routes</small></div>
+                    </div>
+                    <div className="flex-around">
+                      <div>{data.user.routes.length}</div>
                     </div>
                   </div>
                 )
