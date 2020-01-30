@@ -22,10 +22,11 @@ const RouteDetail = props => {
                                 </div>
                             </div>
                             <div className="route-detail-right">
-                                <h2>author</h2>
+                                <h3>
+                                    Route created by {data.route.user.username}
+                                </h3>
                                 <div className="stats">
-                                    distance: 
-                                    nr. of average poops: {data.route.poop}
+                                    püps: {data.route.poop}
                                 </div>
                                 <p>{data.route.description}</p>
                             </div> 
