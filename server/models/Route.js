@@ -25,7 +25,7 @@ const RouteSchema = new Schema({
   },
   poop: {
     type: Number,
-    default: 0
+    default: Math.floor(Math.random() * (128 - 34 + 1)) + 34
   }
   
 });

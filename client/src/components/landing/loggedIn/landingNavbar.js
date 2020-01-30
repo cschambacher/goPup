@@ -16,7 +16,11 @@ const LandingNavbar = props => {
                   return (
                     <div id="landingNavbarContainer">
                       <div id="landingNavbarLeftContainer">
-                        <div id="logoFont">goPüp</div>
+                        <div id="landing-logoFont">
+                          <Link to="/">
+                            goPüp
+                          </Link>
+                        </div>
                         <div id="landingNavbarSearch">
                           <Link
                             style={{ "textDecoration": "none" }}
@@ -43,7 +47,7 @@ const LandingNavbar = props => {
                             </Link>
                             <Link
                               style={{ "textDecoration": "none" }}
-                              to="/routes/explore"
+                              to="/routes"
                             >
                               <div className="dropItem">Explore</div>
                             </Link>

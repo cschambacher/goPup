@@ -100,8 +100,8 @@ const verifyUser = async data => {
         const loggedIn = await User.findById(id).then(user => {
             return user ? true : false;
         });
-        // console.log("verify user", loggedIn, id)
-        return { loggedIn, id };
+        console.log("AUTH-verifyUser", loggedIn, id)
+        return { loggedIn, _id: id };
     } catch (err) {
         return { loggedIn: false };
     }

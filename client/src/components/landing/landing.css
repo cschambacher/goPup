@@ -200,6 +200,13 @@
   margin-top: 10%;
 }
 
+#landing-logoFont a{
+  font-family: 'Flavors', cursive;
+  font-size: 32px;
+  color: #16C94C;
+  text-decoration: none;
+}
+
 #landing-navGroup {
   display: flex;
   flex-direction: column;

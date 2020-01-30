@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import { Query, ApolloConsumer } from "react-apollo";
 import { IS_LOGGED_IN } from "../graphql/queries";
 
@@ -21,10 +21,12 @@ const LandingMaster = () => {
           <Query query={IS_LOGGED_IN}>
             {({ data }) => {
               if (data.isLoggedIn) {
+                console.log("LandingMaster:", data)
                 return (
                   <div id="landingMasterContainer">
                     <LoggedInLandingNavbar />
-                    <LoggedInLandingHero />
+                    <LoggedInLandingHero currUserId={data.currUserId}/>
+                    {/* <Route path="/" component={LoggedInLandingHero} /> */}
                     <LoggedInLandingFooter />
                   </div>
                 );
