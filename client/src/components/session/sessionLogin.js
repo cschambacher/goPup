@@ -27,11 +27,7 @@ class Login extends Component {
     update = (field) => {
         return e => this.setState({ [field]: e.target.value });
     }
-    displayErrors(){
-      if (this.state.errors.length != 0) {
-        return <span >{this.state.errors[0]}</span>
-      } 
-    }
+   
     render() {
         return (
           <Mutation
@@ -48,9 +44,6 @@ class Login extends Component {
 
           >
             {(loginUser)=> (
-              // if (!error) return null;
-              console.log("login state", this.state.errors),
-              // console.log("login error", graphQLErrors),
               
               <div>
                 <div id="sessionBackgroundColor">
