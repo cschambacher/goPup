@@ -12,7 +12,6 @@ class Login extends Component {
             password: "",
             errors: []
         };
-        this.displayErrors = this.displayErrors.bind(this);
     }
     
     updateCache = (client, { data, error }) => {
@@ -84,15 +83,11 @@ class Login extends Component {
                       />
                       <button type="submit">Log In</button>
                      
-                      <p className="session-errors">
-                        {/* {this.state.errors.map(({ message }, i) => (
-                          <span key={i}>{message}</span>
-                        ))} */}
-                        {/* {this.state.email} */}
-                      
-                       {this.state.errors.length > 0 ? this.state.errors[0] : ""}
-  
-                      </p>
+                      <div className="session-errors">
+                       
+                        {this.state.errors.length > 0 ? "ohPüp! " + this.state.errors[0] : ""}
+
+                      </div>
                     </form>
                   </div>
                   <div id="sessionBackgroundImage"></div>
