@@ -63,6 +63,7 @@ const logout = async data => {
 };
 
 const login = async data => {
+    
     try {
         const { message, isValid } = validateLoginInput(data);
 
@@ -80,7 +81,7 @@ const login = async data => {
         
         const token = jwt.sign({ id: user.id }, keys);
 
-        return { token, loggedIn: true, ...user._doc, password: null };
+        return { token, loggedIn: true, ...user._doc, password: null};
     } catch (err) {
         throw err;
     }

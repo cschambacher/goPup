@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { LOGIN_USER } from "../graphql/mutations";
+// import { onError } from "apollo-link-error";
 
 class Login extends Component {
     constructor(props) {
@@ -8,32 +9,50 @@ class Login extends Component {
 
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            errors: []
         };
+        this.displayErrors = this.displayErrors.bind(this);
     }
-
-    updateCache = (client, { data }) => {
+    
+    updateCache = (client, { data, error }) => {
+        
         // here we can write directly to our cache with our returned mutation data
         client.writeData({
-            data: { isLoggedIn: data.login.loggedIn }
+            data: { isLoggedIn: data.login.loggedIn },
+            // errors: error.graphQLErrors
         });
+      console.log("updatecache", client.error)
     }
 
     update = (field) => {
         return e => this.setState({ [field]: e.target.value });
     }
+    displayErrors(){
+      if (this.state.errors.length != 0) {
+        return <span >{this.state.errors[0]}</span>
+      } 
+    }
     render() {
         return (
           <Mutation
             mutation={LOGIN_USER}
+            onError={({ graphQLErrors }) => {
+              if (graphQLErrors) graphQLErrors.map(({ message }) => this.setState({errors: [message]}))
+            }}
             update={(client, data) => this.updateCache(client, data)}
-            onCompleted={data => {
+            onCompleted={({data, error}) => {
               const { token } = data.login;
               localStorage.setItem("auth-token", token);
               this.props.history.push("/");
             }}
+
           >
-            {loginUser => (
+            {(loginUser)=> (
+              // if (!error) return null;
+              console.log("login state", this.state.errors),
+              // console.log("login error", graphQLErrors),
+              
               <div>
                 <div id="sessionBackgroundColor">
                   <div id="sessionLoginFormWrapper">
@@ -64,6 +83,16 @@ class Login extends Component {
                         placeholder="Password"
                       />
                       <button type="submit">Log In</button>
+                     
+                      <p className="session-errors">
+                        {/* {this.state.errors.map(({ message }, i) => (
+                          <span key={i}>{message}</span>
+                        ))} */}
+                        {/* {this.state.email} */}
+                      
+                       {this.state.errors.length > 0 ? this.state.errors[0] : ""}
+  
+                      </p>
                     </form>
                   </div>
                   <div id="sessionBackgroundImage"></div>

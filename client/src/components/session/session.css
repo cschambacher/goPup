@@ -170,3 +170,8 @@
   text-decoration: underline;
   color: white;
 }
+
+.session-errors{
+  font-size: 10;
+  color: red;
+}
