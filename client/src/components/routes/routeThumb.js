@@ -53,7 +53,7 @@ class Thumbnail extends React.Component{
         // fitSelectedRoutes: false,
         // routeWhileDragging: false
       }).addTo(map);
-
+      
       control.hide();
       control
         .on("routesfound", function(e) {
@@ -86,7 +86,10 @@ class Thumbnail extends React.Component{
               </Map>
             </div>
               <div className="map-thumb-footer">
-              <h6><Link to={`/routes/${this.state.idx}`}>{this.state.title}</Link></h6>
+              <h6><Link to={`/routes/${this.state.idx}`}>
+                {this.state.title.length > 12 ? this.state.title.slice(0, 12) + "..." : this.state.title}
+                </Link>
+              </h6>
                 <div className="map-thumb-footer-dist-cont">
                   <div className="map-thumb-footer-dist">
                   {this.state.distance} <small>km</small>
