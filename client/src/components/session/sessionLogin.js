@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { LOGIN_USER } from "../graphql/mutations";
+// import { onError } from "apollo-link-error";
 
 class Login extends Component {
     constructor(props) {
@@ -8,32 +9,42 @@ class Login extends Component {
 
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            errors: []
         };
     }
-
-    updateCache = (client, { data }) => {
+    
+    updateCache = (client, { data, error }) => {
+        
         // here we can write directly to our cache with our returned mutation data
         client.writeData({
-            data: { isLoggedIn: data.login.loggedIn }
+            data: { isLoggedIn: data.login.loggedIn },
+            // errors: error.graphQLErrors
         });
+      console.log("updatecache", client.error)
     }
 
     update = (field) => {
         return e => this.setState({ [field]: e.target.value });
     }
+   
     render() {
         return (
           <Mutation
             mutation={LOGIN_USER}
+            onError={({ graphQLErrors }) => {
+              if (graphQLErrors) graphQLErrors.map(({ message }) => this.setState({errors: [message]}))
+            }}
             update={(client, data) => this.updateCache(client, data)}
-            onCompleted={data => {
+            onCompleted={({data, error}) => {
               const { token } = data.login;
               localStorage.setItem("auth-token", token);
               this.props.history.push("/");
             }}
+
           >
-            {loginUser => (
+            {(loginUser)=> (
+              
               <div>
                 <div id="sessionBackgroundColor">
                   <div id="sessionLoginFormWrapper">
@@ -64,6 +75,12 @@ class Login extends Component {
                         placeholder="Password"
                       />
                       <button type="submit">Log In</button>
+                     
+                      <div className="session-errors">
+                       
+                        {this.state.errors.length > 0 ? "ohPüp! " + this.state.errors[0] : ""}
+
+                      </div>
                     </form>
                   </div>
                   <div id="sessionBackgroundImage"></div>

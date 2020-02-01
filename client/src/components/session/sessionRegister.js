@@ -10,7 +10,8 @@ class Register extends Component {
       email: "",
       username: "",
       password: "",
-      accountType: "owner"
+      accountType: "owner",
+      errors: []
     };
 
   }
@@ -30,6 +31,9 @@ class Register extends Component {
     return (
       <Mutation
         mutation={REGISTER_USER}
+        onError={({ graphQLErrors }) => {
+          if (graphQLErrors) graphQLErrors.map(({ message }) => this.setState({ errors: [message] }))
+        }}
         update={(client, data) => this.updateCache(client, data)}
         onCompleted={data => {
           const { token } = data.register;
@@ -79,6 +83,11 @@ class Register extends Component {
                     <option value="walker">I am a dog walker</option>
                   </select>
                   <button type="submit">Register</button>
+                  <div className="session-errors">
+
+                    {this.state.errors.length > 0 ? "ohPüp! " + this.state.errors[0] : ""}
+
+                  </div>
                 </form>
               </div>
               <div id="sessionBackgroundImage"></div>

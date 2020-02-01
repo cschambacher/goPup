@@ -170,3 +170,12 @@
   text-decoration: underline;
   color: white;
 }
+
+.session-errors{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  font-size: 8;
+  color: red;
+}
