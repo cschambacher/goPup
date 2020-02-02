@@ -18,8 +18,23 @@ const cache = new InMemoryCache({
   dataIdFromObject: object => object._id || null
 });
 
+// const httpLink = createHttpLink({
+//   uri: "http://localhost:5000/graphql",
+//   headers: {
+//     authorization: localStorage.getItem("auth-token")
+//   }
+// });
+
+let uri;
+
+if (process.env.NODE_ENV === "production") {
+  uri = `/graphql`;
+} else {
+  uri = "http://localhost:5000/graphql";
+}
+
 const httpLink = createHttpLink({
-  uri: "http://localhost:5000/graphql",
+  uri,
   headers: {
     authorization: localStorage.getItem("auth-token")
   }
