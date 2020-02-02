@@ -39,6 +39,13 @@ const client = new ApolloClient({
   onError: ({ networkError, graphQLErrors }) => {
     console.log("graphQLErrors", graphQLErrors);
     console.log("networkError", networkError);
+    // if (graphQLErrors)
+    //   graphQLErrors.forEach(({ message, locations, path }) =>
+    //     console.log(
+    //       `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+    //     )
+    //   );
+    // if (networkError) console.log(`[Network error]: ${networkError}`);
   }
 });
 
@@ -47,7 +54,7 @@ const token = localStorage.getItem("auth-token");
 cache.writeData({
   data: {
     isLoggedIn: Boolean(token),
-    currUserId: null
+    currUserId: ""
     // currUserId: "5e3229da901abb1d03d1a186"
   }
 });
@@ -56,10 +63,11 @@ if (token) {
   client
     .mutate({ mutation: VERIFY_USER, variables: { token } })
     .then(({ data }) => {
+      // console.log("index:", data)
       cache.writeData({
         data: { isLoggedIn: data.verifyUser.loggedIn, currUserId: data.verifyUser._id }
       });
-      
+      // debugger      
     });
 }
 

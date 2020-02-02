@@ -192,6 +192,11 @@
   cursor: pointer;
 }
 
+.search-map{
+  height: 300px;
+}
+
+
 .map-index-cont {
   display: flex;
   flex-wrap: wrap;

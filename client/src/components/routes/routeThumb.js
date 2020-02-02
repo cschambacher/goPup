@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Map } from "react-leaflet";
 import L from "leaflet";
 import "leaflet-routing-machine";
@@ -21,6 +21,7 @@ class Thumbnail extends React.Component{
     }
 
     this.getCoords = this.getCoords.bind(this);
+    this.renderTitle = this.renderTitle.bind(this);
   }
     
     getCoords(str){
@@ -53,7 +54,7 @@ class Thumbnail extends React.Component{
         // fitSelectedRoutes: false,
         // routeWhileDragging: false
       }).addTo(map);
-
+      
       control.hide();
       control
         .on("routesfound", function(e) {
@@ -63,6 +64,22 @@ class Thumbnail extends React.Component{
           this.setState({ distance: distance }, 
             )
         }.bind(this))
+    }
+
+    renderTitle(){
+      if (this.props.match.path === "/routes/:id"){
+        return (
+          <h6>{this.state.title}</h6>
+        )
+      } else {
+        return (
+          <h6>
+            <Link to={`/routes/${this.state.idx}`}>
+              {this.state.title.length > 12 ? this.state.title.slice(0, 12) + "..." : this.state.title}
+            </Link>
+          </h6>
+        )
+      }
     }
 
     render(){
@@ -86,7 +103,7 @@ class Thumbnail extends React.Component{
               </Map>
             </div>
               <div className="map-thumb-footer">
-              <h6><Link to={`/routes/${this.state.idx}`}>{this.state.title}</Link></h6>
+              {this.renderTitle()}
                 <div className="map-thumb-footer-dist-cont">
                   <div className="map-thumb-footer-dist">
                   {this.state.distance} <small>km</small>
@@ -100,4 +117,4 @@ class Thumbnail extends React.Component{
       }
   }
   
-export default Thumbnail;
+export default withRouter(Thumbnail);

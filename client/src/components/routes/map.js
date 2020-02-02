@@ -75,6 +75,7 @@ class MapAPI extends React.Component {
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "© OpenStreetMap contributors"
     }).addTo(map);
+    // L.Control.geocoder().addTo(map);
 
     L.Routing.control({
       waypoints: [
@@ -253,7 +254,6 @@ class MapAPI extends React.Component {
 
         <div className="map-cont">
           <Navbar className="map-nav" color="light" light expand="md">
-            {/* <NavbarBrand href="/">goPup</NavbarBrand> */}
             <div className="map-search-cont">
               <input className="map-searchbar" type="text" placeholder="Search" />
               <i className="fas fa-search"></i>
