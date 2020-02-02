@@ -24,7 +24,7 @@ const RouteDetail = props => {
                             <div className="route-detail-container">
                                 <div className="route-detail-left">
                                     <div className="map-route-detail" key={data.route._id}>
-                                        <Thumbnail idx={`${data.route._id}`} start={data.route.start} end={data.route.end} />
+                                        <Thumbnail idx={`${data.route._id}`} start={data.route.start} end={data.route.end} title={data.route.title} description={data.route.description} />
                                     </div>
                                 </div>
                                 <div className="route-detail-right">

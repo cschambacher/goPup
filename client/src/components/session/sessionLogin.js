@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { LOGIN_USER } from "../graphql/mutations";
-// import { onError } from "apollo-link-error";
+// import { FETCH_USER } from "../graphql/queries";
+import { onError } from "apollo-link-error";
 
 class Login extends Component {
     constructor(props) {
@@ -15,16 +16,21 @@ class Login extends Component {
     }
     
     updateCache = (client, { data, error }) => {
-        
+      // console.log("updateCache-cache:", cache)
+      // console.log("updateCache-data:", data)
         // here we can write directly to our cache with our returned mutation data
+        // console.log("updatecache", {data})
         client.writeData({
             data: { isLoggedIn: data.login.loggedIn },
             // errors: error.graphQLErrors
         });
-      console.log("updatecache", client.error)
+        // console.log("updateCache-data:", data)
+        // const { token } = data.login;
+        // localStorage.setItem("auth-token", token)
+        // debugger
     }
 
-    update = (field) => {
+    update = (field) => { 
         return e => this.setState({ [field]: e.target.value });
     }
    
@@ -33,18 +39,28 @@ class Login extends Component {
           <Mutation
             mutation={LOGIN_USER}
             onError={({ graphQLErrors }) => {
+              // debugger
               if (graphQLErrors) graphQLErrors.map(({ message }) => this.setState({errors: [message]}))
             }}
             update={(client, data) => this.updateCache(client, data)}
-            onCompleted={({data, error}) => {
+        
+            onCompleted={(data) => {
+              // debugger
               const { token } = data.login;
               localStorage.setItem("auth-token", token);
+              console.log("Mutation data:", data);
               this.props.history.push("/");
-            }}
-
+              window.location.reload();
+            }} 
+            // refetchQueries={() => {
+            //   console.log("refetchQueries:", this.props.currUserId)
+            //   return [{
+            //     query: FETCH_USER,
+            //     variables: {id: this.props}
+            //   }]
+            // }}
           >
             {(loginUser)=> (
-              
               <div>
                 <div id="sessionBackgroundColor">
                   <div id="sessionLoginFormWrapper">

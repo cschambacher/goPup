@@ -22,12 +22,12 @@ const LandingNavbar = props => {
                           </Link>
                         </div>
                         <div id="landingNavbarSearch">
-                          <Link
+                          {/* <Link
                             style={{ "textDecoration": "none" }}
                             to="/routes/explore"
                           >
                             <i id="searchIcon" className="fas fa-search"></i>
-                          </Link>
+                          </Link> */}
                         </div>
                         <div
                           id="landingNavbarMenuDashboard"
