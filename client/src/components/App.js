@@ -6,7 +6,8 @@ import LandingMaster from "./landing/landingMaster";
 import MapAPI from "./routes/map";
 import RouteIndex from "./routes/routeIndex";
 import RouteDetail from "./routes/routeDetail";
-import StatsMaster from "./stats/statsMaster"
+import StatsMaster from "./stats/statsMaster";
+
 
 
 const App = () => {
