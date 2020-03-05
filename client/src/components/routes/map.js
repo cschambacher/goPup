@@ -278,7 +278,7 @@ class MapAPI extends React.Component {
                     GitHub
                   </NavLink>
                 </NavItem>
-                <UncontrolledDropdown nav inNavbar>
+                {/* <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
                     Options
                   </DropdownToggle>
@@ -288,7 +288,7 @@ class MapAPI extends React.Component {
                     <DropdownItem divider />
                     <DropdownItem>Reset</DropdownItem>
                   </DropdownMenu>
-                </UncontrolledDropdown>
+                </UncontrolledDropdown> */}
               </Nav>
               <button className="map-save-button" onClick={this.openModal}>
                 Save
