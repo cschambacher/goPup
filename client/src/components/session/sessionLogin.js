@@ -13,8 +13,14 @@ class Login extends Component {
             password: "",
             errors: []
         };
+        this.handleDemoUserLogin = this.handleDemoUserLogin.bind(this)
     }
     
+
+// DEMO USER:
+// signup a demo user
+// button onClick sets state with correct info
+
     updateCache = (client, { data, error }) => {
       // console.log("updateCache-cache:", cache)
       // console.log("updateCache-data:", data)
@@ -32,6 +38,13 @@ class Login extends Component {
 
     update = (field) => { 
         return e => this.setState({ [field]: e.target.value });
+    }
+
+    handleDemoUserLogin(e){
+      this.setState({
+        email: "demoUser@demo.com",
+        password: "demouser"
+      })
     }
    
     render() {
@@ -91,6 +104,8 @@ class Login extends Component {
                         placeholder="Password"
                       />
                       <button type="submit">Log In</button>
+                      <br/>
+                      <button type="submit" onClick={this.handleDemoUserLogin}>Demo</button>
                      
                       <div className="session-errors">
                        
