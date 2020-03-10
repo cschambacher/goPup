@@ -2,7 +2,6 @@ import React from "react";
 import { FETCH_ROUTES } from "../graphql/queries";
 import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
-import { useQuery } from '@apollo/react-hooks';
 
 class IndexSearch extends React.Component {
   constructor(props){
@@ -13,7 +12,6 @@ class IndexSearch extends React.Component {
     }
 
     this.updateSearch = this.updateSearch.bind(this);
-    // this.fetchRoutes = this.fetchRoutes.bind(this);
   }
 
   updateSearch(e){

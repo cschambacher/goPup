@@ -104,17 +104,24 @@
 }
 
 .poopPlusPlus {
-  border: 1px solid black;
-  padding: 0px 10px;
+  /* border: 1px solid black; */
+  padding: 5px 30px;
   margin: 0px 15px;
+  border-radius: 5px;
+  background-color: #16C94C;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .poopPlusPlus:hover {
+  background: #02B538; 
   cursor: pointer;
 }
 
 .stats {
   display: flex;
+  align-items: center;
 }
 
 .modal-form {
