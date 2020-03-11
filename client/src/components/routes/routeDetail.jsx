@@ -14,6 +14,8 @@ const RouteDetail = props => {
             {({ loading, error, data }) => {
                 if (loading) return <p>Loading...</p>;
                 if (error) return <p>Error</p>;
+
+                const name = data.route.user.username
                 return (
                     <div>
                         <LoggedInLandingNavbar />
@@ -29,13 +31,14 @@ const RouteDetail = props => {
                                 </div>
                                 <div className="route-detail-right">
                                     <h3>
-                                        Route created by {data.route.user.username}
+                                        Route created by {name.charAt(0).toUpperCase() + name.slice(1)}
                                     </h3>
                                     <div className="stats">
                                         püps: {data.route.poop}
                                         <Mutation mutation={UPDATE_ROUTE_POOP}>
                                             {(updateRoutePoop, mutationData) => (
                                             <div 
+                                                // className="routeIndex-create-button"
                                                 className="poopPlusPlus"
                                                 onClick={(e) => {
                                                 e.preventDefault()
