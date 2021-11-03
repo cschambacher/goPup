@@ -32,7 +32,7 @@
     "leaflet": "^1.6.0",
     "mongoose": "^5.8.9",
     "nodemon": "^2.0.2",
-    "validator": "^12.1.0"
+    "validator": "^13.7.0"
   },
   "proxy": "http://localhost:5000"
 }
